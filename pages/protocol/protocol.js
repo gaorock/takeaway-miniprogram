@@ -1,4 +1,4 @@
-const {getAgreementUrl} = require('../../utils/api');
+const {getAgreement} = require('../../utils/api');
 const fetch = require('../../utils/fetch');
 
 // pages/protocol/protocol.js
@@ -8,15 +8,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    protocol: '',
+    title: '',
+    content: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
-    const res = await fetch(getAgreementUrl);
-    if (res.code === 1) this.setData({protocol: res.data});
+    const res = await fetch(getAgreement);
+    if (res.code === 1) this.setData({
+      title: res.data.agreement,
+      content: res.data.content
+    });
   },
 
   /**

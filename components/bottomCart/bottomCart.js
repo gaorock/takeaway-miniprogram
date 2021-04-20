@@ -11,9 +11,16 @@ Component({
       type: Number,
       value: 0
     },
-    price: {
-      type: Array,
+    price: Array,
+    deliveryFee: {
+      type: Number,
+      value: 0
+    },
+    closed: {
+      type: Boolean,
+      value: false
     }
+
   },
 
   /**

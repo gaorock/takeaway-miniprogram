@@ -25,9 +25,30 @@ const api = {
   // 1 - address_id （address id）
   // 2 - lng: , lat:
   // goods: [], {id, subId, num}
-
-  // return fanwei 0超出1正常
-  postSettleOrder: 'user/order/settlement',
+  
+  /** 1. area
+   * {
+   *  delivery_area: [],
+   *  freight: 0,
+   *  price: 0,
+   *  total_price: 0,
+   *  youhui: ''
+   * }
+   * 1. detail
+   * {
+   *  address: {},
+   *  error_msg: '',   超出范围
+   *  freight: 0，
+   *  price：0，
+   *  time： '',
+   *  total_price: '',
+   *  youhui: '',
+   * }
+   * 
+   * goods: [..., stock]
+   * 
+   */
+  postSettleOrder: 'user/order/order_page',
   // 去下订单
   // remark: '' //备注信息
   // freight: ''  //配送费
@@ -35,7 +56,11 @@ const api = {
   // price: '' //总价，
   // man_price: 0 //满减
   // type: 1|2 // 1配送id2自取
-  // 1. address_id: 48,
+  // 1.1 address_id: 48,
+  // 
+  // 1.2.1 contact
+  // 1.2.2 mobile
+  // 1.2.3 area
 
   // 2. ziqu_time: XXXX-XX-XX
   // 2. mobile:
@@ -119,6 +144,8 @@ const api = {
   postAddCommit: 'user/goods_comments/addComments',
   // 获取用户账户信息 - GET (null)
   getUserInfo: '/user/Profile/userInfo',
+  // 
+  getAgreement: 'user/order/agreement'
 
 }
 

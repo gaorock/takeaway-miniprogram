@@ -1,6 +1,5 @@
 
 
-
 .order-container {
   position: relative;
   z-index: 1;
@@ -113,7 +112,41 @@
           }
         }
       }
+    }
 
+    .tab-content-1 {
+
+      .picker {
+        display: flex;
+
+        .area {
+          flex: 1;
+        }
+
+        image {
+          width: 40rpx;
+          height: 40rpx;
+        }
+
+      }
+
+      .delivery_type_1_input_wapper {
+        display: flex;
+
+        .delivery_type_1_input {
+          flex: 1;
+          padding: 30rpx 0;
+          font-size: 31rpx;
+        }
+
+      }
+
+      
+      .placeholder {
+        height: auto;
+        color: #aaa;
+      }
+      
 
     }
 

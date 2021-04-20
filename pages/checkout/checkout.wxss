@@ -111,6 +111,34 @@
   height: 38rpx;
 }
 
+.order-container .order-type-wrapper .tab-content-1 .picker {
+  display: flex;
+}
+
+.order-container .order-type-wrapper .tab-content-1 .picker .area {
+  flex: 1;
+}
+
+.order-container .order-type-wrapper .tab-content-1 .picker image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.order-container .order-type-wrapper .tab-content-1 .delivery_type_1_input_wapper {
+  display: flex;
+}
+
+.order-container .order-type-wrapper .tab-content-1 .delivery_type_1_input_wapper .delivery_type_1_input {
+  flex: 1;
+  padding: 30rpx 0;
+  font-size: 31rpx;
+}
+
+.order-container .order-type-wrapper .tab-content-1 .placeholder {
+  height: auto;
+  color: #aaa;
+}
+
 .order-container .order-type-wrapper .tab-content-2 .address-wrapper .right {
   text-align: right;
 }

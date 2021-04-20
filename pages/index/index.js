@@ -30,6 +30,9 @@ Page({
 
     popup: false,        // home page, coupon popup
 
+    shop_closed: false,         // shop status of closed 
+    default_delivery_fee: 0,    // initial delivery fee
+
   },
 
 
@@ -191,7 +194,7 @@ Page({
     const res = await fetch(getHomeDataUrl);
 
     if (res.code !== 1) return console.warn('internet request fail.')
-    
+    console.log(res)
     const json = formatData(res.data);
     
     console.log(json)
@@ -203,9 +206,13 @@ Page({
       shop: json.shop,
       products: json.products,
       catelist: json.cate,
-      coupon: json.coupon
+      coupon: json.coupon,
+      shop_closed: json.shop_closed,
+      delivery_fee: json.delivery_fee
     })
 
+    // save 'delivery_type': 1配送2自取3随意
+    wx.setStorageSync('delivery_type', json.delivery_type);
 
     
 

@@ -73,9 +73,11 @@
 
   <Cart 
     total="{{cartTotal}}" price="{{priceTotal}}" 
+    deliveryFee="{{default_delivery_fee}}" closed="{{shop_closed}}"
     wx:if="{{cartTotal > 0}}" 
     bind:cartAmountChange="onCartAmountChange"
     bind:clearoutcart="onClearOutCart"/>
+
   <Select wx:if="{{showMultiID !== null}}"
     bind:closeSelect="onCloseSelect"
     bind:submitSelect="onSubmitSelect"

@@ -9,6 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // renew from localstorage 
+    delivery_type: 3,
+
     tabIndex: 0,
     agreeChecked: true,
     cartList: [],
@@ -26,6 +29,9 @@ Page({
     phone: '',
     address_id: '',
 
+    area: null, // fixed delivery_area []
+    picked_index: null, // fixed delivery_area picked index
+
     // 1 takeaway
     distance: 0,
     shopLocation: '',
@@ -33,10 +39,14 @@ Page({
     showSetting: false,
     permission: false,
 
-    remark: ''
+    // remark: '' // this._remark
   },
 
   async changeTab (e) {
+    // lock user tab behaviour if not 3(any)
+    if (this.data.delivery_type !== 3) return;
+
+
     const {idx} = e.currentTarget.dataset;
     const that = this;
     // user choose takeaway
@@ -82,14 +92,16 @@ Page({
   },
 
 
+
   // invoke 'check_geoLocation' to check permission
   // get shop address and distance
   async _getUserLocation () {
-    if (this.data.permission) return;
+    // if (this.data.permission) return;
 
     try {
       // check user permission
       const location = await check_geoLocation();
+      console.log(location)
       const data = {
         type: 2,
         goods: this._requestList,
@@ -166,11 +178,14 @@ Page({
           data: {
             type: 1,
             goods: this._requestList,
-            address_id: 51
+            // address_id: 51
           }
         })
         if (res.code === 1) {
-          const {total_price, price, youhui, time, freight, address} = res.data.data;
+          const {total_price, price, youhui, time, freight, address, delivery_area} = res.data.data;
+
+          console.log(delivery_area)
+
           this.setData({
 
             checkout: {
@@ -183,7 +198,8 @@ Page({
             },
             contact: address?address.contact:null,
             phone: address?address.phone:null,
-            id: address?address.id:null
+            id: address?address.id:null,
+            area: delivery_area
           })
           
           resolve(true)
@@ -244,7 +260,7 @@ Page({
 
   onMemoChange (e) {
     const {value} = e.detail;
-    this.setData({remark: value})
+    this._remark = value
   },
 
   async togopay () {
@@ -252,7 +268,7 @@ Page({
     const type = this.data.tabIndex + 1;
 
     const data = {
-      remark: '',
+      remark: this._remark || '',
       freight: 0,
       youhui: 10,
       price: 20,
@@ -262,25 +278,53 @@ Page({
     }
 
 
-
+    data['asd'] = 123123;
     if (type === 2) {
-      data['ziqu_time'] = 'xxxx-xx-xx'
-      data['mobile'] = '12345678910'
+      data['ziqu_time'] = 'HH-MM'
+      data['mobile'] = this._contactPhone || '12345678910'
+
+      // type === 1 and id !== null
     } else {
       data['address_id'] = this.data.id
+      if (this.data.area) {
+        if (this.data.picked_index) {
+          data['area'] = this.data.area[this.data.picked_index];
+          data['contact'] = this._fixedDeliveryName;
+          data['mobile'] = this._fixedDeliveryPhone;
+        } else {
+          console.log('请选择配送区域')
+        }
+        
+      }
     }
 
-    const orderRes = await fetch(URLs.postAddOrder, {
-      method: 'POST',
-      data
-    })
+    // const orderRes = await fetch(URLs.postAddOrder, {
+    //   method: 'POST',
+    //   data
+    // })
 
     console.log(data)
 
-    console.log(orderRes)
+    // console.log(orderRes)
     // wx.navigateTo({
     //   url: `../pay/pay?money=${this.data.checkout.price.join('.')}`,
     // })
+  },
+
+
+  /**
+   * Case: delivery_type = 1|3, fixed delivery area is defined 
+   */
+  onAreaChange (e) {
+    this.setData({picked_index: e.detail.value})
+  },
+
+  onFixedDeliveryNameChange(e) {
+    this._fixedDeliveryName = e.detail.value;
+  },
+
+  onFixedDeliveryPhoneChange(e) {
+    this._fixedDeliveryPhone = e.detail.value;
   },
 
   /**
@@ -294,8 +338,36 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: async function () {
-    // default tab 1
-    await this._requestSettle();
+    try {
+      // load 'delivery_type': 1配送2自取3随意
+      const delivery_type = wx.getStorageSync('delivery_type');
+      this.setData({delivery_type})
+      // deliver
+      if (delivery_type === 2) {
+        this.setData({tabIndex: 1})
+        try{
+          await this._getUserLocation()
+        } catch(e) {
+          // get permission to use geoLocation
+          console.error(e)
+          this.setData({showSetting: true, permission: false})
+        }
+        
+      } else {
+        // default tab 1
+        await this._requestSettle();
+      }
+    } catch(e) {  
+
+      console.warn(e)
+
+    }
+    
+
+    
+
+
+    
   },
 
   /**

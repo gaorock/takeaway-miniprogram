@@ -235,3 +235,15 @@
   font-size: 28rpx;
   padding-right: 10rpx;
 }
+
+/* closed */
+.cart-closed {
+  width: 180rpx;
+  background-color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 28rpx;
+  padding-right: 10rpx;
+}

@@ -1,5 +1,8 @@
 function formatData (data) {
-  const {cate, shop, mj} = data;
+  const {cate, shop, mj, delivery_type, is_closed, ps} = data;
+  // is_closed //是否闭店
+  // ps 初始配送金额
+  // delivery_type 1配送|2自取|3都可以
 
   const catelist = []; 
   const products_table = {};
@@ -41,7 +44,10 @@ function formatData (data) {
       time: `${shop.start.slice(0, 5)} -- ${shop.end.slice(0, 5)}`
     },
     coupon: coupon,
-    productsTable: products_table
+    productsTable: products_table,
+    delivery_type,
+    delivery_fee: ps,
+    shop_closed: is_closed === 1
   }
 }
 

@@ -14,14 +14,32 @@
       <view class="right{{tabIndex === 1?' active':''}}" bind:tap="changeTab" data-idx="{{1}}">到店自取</view>
     </view>
     <view wx:if="{{tabIndex === 0}}" class="tab-content-1">
-      <navigator url="/pages/address/address">
-        <view class="address-wrapper">
-          <view class="address">{{checkout.address || '请添加地址'}}</view>
-          <image class="icon" src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix" />
-        </view>
-      </navigator>
+      <block>
+        <navigator url="/pages/address/address?choose=1" wx:if="{{!area}}">
+          <view class="address-wrapper">
+            <view class="address">{{checkout.address || '请添加地址'}}</view>
+            <image class="icon" src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix" />
+          </view>
+        </navigator>
+        <picker wx:else mode="selector" class="flex-1"
+        value="{{picked_index}}" range="{{area}}" bind:change="onAreaChange">
+          <view class="picker">
+            <view class="area {{picked_index === null?' placeholder':''}}">{{picked_index === null?'请选择配送区域':area[picked_index]}}</view>
+            <image src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix"  />
+          </view>
+        </picker>
+      </block>
       
       <view wx:if="{{contact && phone}}" class="phone">{{contact}} {{phone}}</view>
+      <view wx:else class="delivery_type_1_input_wapper"> 
+        <input class="delivery_type_1_input" 
+        placeholder="请输入联系人" placeholder-class="placeholder" 
+        bind:input="onFixedDeliveryNameChange"/>
+        <input class="delivery_type_1_input" type="digit"
+        placeholder="请输入联系电话"  placeholder-class="placeholder" 
+        bind:input="onFixedDeliveryPhoneChange"/>
+      </view>
+
       <view class="deliver">
         <view>发送时间</view>
         <view class="time">
