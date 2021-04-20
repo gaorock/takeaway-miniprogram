@@ -1,0 +1,126 @@
+<!--pages/checkout.wxml-->
+<view class="linear-background">
+  <view class="block"></view>
+  <view class="linear"></view>
+  <view class="fill"></view>
+</view>
+
+
+<view class="order-container">
+
+  <view class="order-type-wrapper">
+    <view class="tabs">
+      <view class="left{{tabIndex === 0?' active':''}}" bind:tap="changeTab" data-idx="{{0}}">外卖配送</view>
+      <view class="right{{tabIndex === 1?' active':''}}" bind:tap="changeTab" data-idx="{{1}}">到店自取</view>
+    </view>
+    <view wx:if="{{tabIndex === 0}}" class="tab-content-1">
+      <navigator url="/pages/address/address">
+        <view class="address-wrapper">
+          <view class="address">{{checkout.address || '请添加地址'}}</view>
+          <image class="icon" src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix" />
+        </view>
+      </navigator>
+      
+      <view wx:if="{{contact && phone}}" class="phone">{{contact}} {{phone}}</view>
+      <view class="deliver">
+        <view>发送时间</view>
+        <view class="time">
+          <text>预计{{checkout.time}}送达</text>
+          <image class="icon" src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix" />
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{tabIndex === 1}}" class="tab-content-2">
+      <view class="address-wrapper">
+        <view class="address" bind:tap="showSetting">{{permission?shopLocation: '设置权限'}}</view>
+        <view class="right">
+          <view class="map">查看地图</view>
+          <view class="distance">距您约{{distance}}km</view>
+        </view>
+      </view>
+      <view class="take-info">
+        <view class="left">
+          <view class="time-text">自取时间</view>
+          <view class="time-num">11:30<image class="icon" src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix" /></view>
+        </view>
+        <view class="right">
+          <view class="phone-text">预留电话</view>
+          <view class="phone-num">{{phone || '填写电话'}}<text>（点击修改）</text></view>
+        </view>
+      </view>
+      <view class="agree">
+        <label class="checkbox" bind:tap="changeAgree">
+          <image class="icon" src="/assets/icons/check_box{{agreeChecked?'-checked':''}}.svg" mode="widthFix" />
+          同意并接受
+        </label>
+        <navigator class="view-agree" url="/pages/protocol/protocol">《到店自取用户协议》</navigator>
+      </view>
+    </view>
+  </view>
+
+  <view class="order-detail-wrapper">
+    <text class="title">订单详情</text>
+    <view class="order-item" wx:for="{{cartList}}" wx:key="key"
+    wx:for-item="prod">
+      <image class="item-image" mode="aspectFill" src="{{prod.thumbnail}}" />
+      <view class="right">
+        <view class="title-wrapper">
+          <text class="title">{{prod.name}}</text>
+          <text class="price">¥<text>{{prod.price[0]}}.{{prod.price[1]}}</text></text></view>
+        <view class="tags">{{prod.tag}}</view>
+        <view class="amount">x{{prod.amount}}</view>
+      </view>
+    </view>
+
+    <view class="title-item">
+      <view class="desc">配送费<text class="deliver">（商家配送）</text></view>
+      <view class="price">¥<text>{{checkout.deliver_fee}}</text></view>
+    </view>
+    <view class="title-item">
+      <view class="desc">商品小计</view>
+      <view class="price red">¥<text>{{checkout.total_price}}</text></view>
+    </view>
+    <view class="title-item">
+      <view class="desc">
+        <image src="/assets/icons/coupon-juan.png" mode="widthFix" class="icon" />
+        <text class="juan">优惠卷</text>
+      </view>
+      <view class="price red right-align">
+        -¥<text>{{checkout.youhui}}</text>
+        <image class="icon" src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix" /> 
+      </view>
+    </view>
+    <view class="title-item">
+      <view class="desc">合计</view>
+      <view class="price red">¥<text>{{checkout.price[0]}}.{{checkout.price[1]}}</text></view>
+    </view>
+
+  </view>
+
+  <view class="order-memo-wrapper">
+    <text class="title">订单详情</text>
+    <textarea placeholder="请输入口味偏好等要求，不支持额外代购其他物品哦~" 
+    name="textarea" class="memo-input" maxlength="{{200}}" bindinput="onMemoChange"/>
+  </view>
+
+  <view class="placeholder"></view>
+</view>
+
+<view class="order-submit-wrapper">
+  <view class="buttons">
+    <view class="summary">
+      <view>
+        合计￥<text class="yuan">{{checkout.price[0]}}</text>.{{checkout.price[1]}}<text class="fee">（配送费￥{{deliver_fee}}）</text>
+      </view>
+      <view class="discount">已优惠￥{{checkout.youhui}}</view>
+    </view>
+    <view class="pay" bind:tap="togopay">去支付</view>
+  </view>
+  <view class="iphone" style="height: {{bottomHeight}}rpx">
+    <view class="summary"></view>
+    <view class="pay"></view>
+  </view>
+</view>
+
+
+<Setting wx:if="{{showSetting}}" bind:confirmSetting="onConfirmSetting" />

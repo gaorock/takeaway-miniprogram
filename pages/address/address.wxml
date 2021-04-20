@@ -1,0 +1,26 @@
+<!--pages/address/address.wxml-->
+<block wx:if="{{login}}">
+  <view class="add-address" bind:tap="addNewAddress">
+    <image src="/assets/icons/detail-plus.png" mode="widthFix" />
+    <view>新增地址</view>
+  </view>
+
+  <view class="address-item" wx:for="{{list}}" wx:key="id">
+    <view class="details">
+      <view class="info">
+        <view class="info-address">{{item.address}} {{item.detail}}<text>{{tags[item.tag-1]}}</text></view>
+        <view class="info-contact">{{item.contact}} {{item.phone}}</view>
+      </view>
+      <navigator url="/pages/addressAdd/addressAdd?id={{item.id}}">
+        <image src="/assets/icons/edit.png" class="edit-icon" mode="widthFix"/>
+      </navigator>
+    </view>
+    <view class="set-default" bind:tap="onChangeDefault" data-id="{{item.id}}">
+      <image src="/assets/icons/radio_button{{item.id === default?'_checked':''}}.svg"  mode="widthFix" />
+      <text>{{item.id === default?'默认地址':'设为默认地址'}}</text>
+    </view>
+  </view>
+</block>
+<view class="login" wx:else>
+  <view>登录</view>
+</view>

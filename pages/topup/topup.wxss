@@ -1,0 +1,100 @@
+page {
+  background-color: #f2f2f2;
+}
+
+.balance-display {
+  padding: 60rpx 0;
+  text-align: center;
+}
+
+.balance-display .amount {
+  padding: 10rpx 0;
+  font-weight: bold;
+  font-size: 38rpx;
+}
+
+.balance-display .amount text {
+  font-size: 70rpx;
+}
+
+.balance-display .text {
+  padding: 10rpx 0;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.topup-option {
+  padding: 30rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.topup-option .title {
+  padding-bottom: 20rpx;
+  font-size: 28rpx;
+}
+
+.topup-option .topup-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20rpx;
+}
+
+.topup-option .topup-block .option-item {
+  background-color: #fff6f6;
+  color: #fe4a4b;
+  text-align: center;
+  padding: 40rpx;
+  border-radius: 10rpx;
+}
+
+.topup-option .topup-block .option-item.active {
+  color: #fff;
+  background-color: #fe4a4b;
+}
+
+.topup-option .topup-block .option-item.active .promote {
+  color: #fff;
+}
+
+.topup-option .topup-block .option-item .amount {
+  font-family: 'DIN';
+  font-size: 28rpx;
+}
+
+.topup-option .topup-block .option-item .amount text {
+  font-size: 50rpx;
+}
+
+.topup-option .topup-block .option-item .promote {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.topup-custom {
+  padding: 30rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.topup-custom .inputbox {
+  padding: 0 30rpx;
+}
+
+.topup-submit {
+  padding: 0 30rpx;
+  margin-top: 100rpx;
+}
+
+.topup-submit view {
+  text-align: center;
+  width: 100%;
+  padding: 20rpx;
+  background-color: #fe4a4b;
+  color: #fff;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+}

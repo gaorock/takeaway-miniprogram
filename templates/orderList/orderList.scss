@@ -1,0 +1,103 @@
+.template-order {
+  background-color: #fff;
+  margin: 20rpx 0;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+
+  .pic {
+    width: 120rpx;
+    height: 120rpx;
+  }
+
+  .title {
+    display: flex;
+    
+    .order-title {
+      flex: 1;
+    }
+    .order-status-0, .order-status-1 {
+      color: #fe4a4b
+    }
+
+    .order-status-2, .order-status-3 {
+      color: #999;
+    }
+  }
+
+
+  .details {
+    display: flex;
+    padding: 40rpx 0;
+
+    .items {
+      flex: 1;
+      display: flex;
+    }
+
+    .single {
+      view {
+        padding: 0 10px;
+      }
+    }
+
+    .notsingle {
+      .item {
+        display: flex;
+        flex-direction: column;
+        margin-right: 20rpx;
+
+        text {
+          width: 120rpx;
+          white-space: nowrap;      /*超出的空白区域不换行*/
+          overflow: hidden;         /*超出隐藏*/
+          text-overflow: ellipsis;  /*文本超出显示省略号*/
+        }
+      }
+    }
+
+    .summary {
+      text-align: right;
+
+
+      .price {
+        font-weight: bold;
+        font-size: 24rpx;
+        text {
+          font-size: 28rpx;
+        }
+      }
+      .amount {
+        font-size: 26rpx;
+        color: #999;
+      }
+    }
+
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 20rpx;
+
+    view {
+      text-align: center;
+      padding: 5rpx 0;
+      width: 160rpx;
+      margin-left: 30rpx;
+      border-radius: 30rpx;
+      font-size: 24rpx;
+    }
+
+    .onemore {
+      border: 1px solid #eee;
+      color: #666;
+    }
+
+    .goto {
+      border: 1px solid #fe4a4b;
+      color: #fe4a4b;
+    }
+  }
+
+}

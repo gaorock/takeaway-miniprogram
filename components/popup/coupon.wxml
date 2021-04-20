@@ -1,0 +1,25 @@
+<!--components/popup/coupon.wxml-->
+<view class="coupon-popup">
+  <view class="content">
+    <view class="wrapper">
+      <view class="placeholder">
+         <image class="top" src="/assets/images/coupon-top.png" mode="widthFix" />
+      </view>
+      <view class="main">
+        <view class="text">恭喜获得优惠券</view>
+        <view class="coupon" wx:for="{{coupon}}" wx:key="id"
+        bind:touchstart="onTapCoupon" data-idx="{{item.id}}">
+          <view class="left">￥<text>{{item.money}}</text>.0</view>
+          <view class="right">
+            <view>满{{item.limit}}可用</view>
+            <view>有效期至{{item.expires}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="close">
+      <image src="/assets/icons/highlight_off-black-24dp.svg" mode="widthFix" bind:tap="close"/> 
+    </view>
+  </view>
+  <view class="cover" bind:tap="close"></view>
+</view>

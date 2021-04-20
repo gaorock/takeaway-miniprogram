@@ -1,0 +1,57 @@
+.top-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.top-wrapper text {
+  flex: 1;
+  color: #fff;
+  font-size: 46rpx;
+  font-weight: bold;
+}
+
+.top-wrapper image {
+  position: relative;
+  top: 6rpx;
+  right: 4rpx;
+  height: 140rpx;
+  width: 220rpx;
+}
+
+.status-container {
+  text-align: center;
+  padding: 20rpx;
+}
+
+.status-container .title-text {
+  font-size: 28rpx;
+  padding: 20rpx 0;
+}
+
+.status-container .utils-done {
+  display: flex;
+  padding: 20rpx 0;
+}
+
+.status-container .utils-done > view navigator {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-container .utils-done > view.center {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.status-container .utils-done > view image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.status-container .utils-done > view text {
+  font-size: 26rpx;
+  padding-left: 5rpx;
+}

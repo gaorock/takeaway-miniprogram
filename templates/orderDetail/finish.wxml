@@ -1,0 +1,23 @@
+<template name="order-finish">
+  <view class="top-wrapper">
+    <text class="title-status">订单已完成</text>
+    <image src="/assets/images/bg-done.png" mode="widthFix" />
+  </view>
+  <view class="sec status-container">
+    <view class="title-text">感谢您对本店的信赖，欢迎再次光临</view>
+    <view class="utils-done">
+      <view bind:tap="oneMoreOrder">
+        <image src="/assets/icons/detail-plus.png" mode="widthFix" />
+        <text>再来一单</text>
+      </view>
+      <view class="center" bind:tap="toEvaluate">
+        <image src="/assets/icons/detail-talk.png" mode="widthFix" />
+        <text>评价</text>
+      </view>
+      <view>
+        <image src="/assets/icons/detail-shop.png" mode="widthFix" />
+        <text>联系商家</text>
+      </view>
+    </view>
+  </view>
+</template>

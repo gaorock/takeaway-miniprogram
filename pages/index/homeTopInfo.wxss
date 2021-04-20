@@ -1,0 +1,112 @@
+/* top section */
+/* address - info */
+
+.home-middle-wrapper {
+  width: 100%;
+}
+
+.middle-part-1 {
+  position: relative;
+  padding-bottom: 20rpx;
+  border-radius: 40rpx 40rpx 0 0;
+  background-color: #fff;
+}
+
+.middle-sec-1, .middle-sec-2, .middle-sec-3 {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.middle-sec-1 {
+  height: 80rpx;
+  display: flex;
+  align-items: flex-end;
+}
+
+.store-logo {
+  position: absolute;
+  top: -24rpx;
+  left: 56rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 20rpx;
+  border: 1px solid #fff;
+}
+.store-text {
+  position: relative;
+  font-size: 34rpx;
+  font-weight: bold;
+  padding-left: 130rpx;
+}
+
+.middle-sec-2 {
+  display: flex;
+  align-items: center;
+  margin: 26rpx auto;
+}
+
+.info-icon {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+
+
+.sec-2-left{
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+}
+
+.sec-2-right {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  font-size: 24rpx;
+  justify-content: flex-end;
+
+}
+
+
+.middle-sec-3 {
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70rpx;
+  box-shadow: 0 20rpx 20rpx rgba(0,0,0,0.1);
+}
+
+.notice-icon {
+  width: 130rpx;
+  /* height: 64rpx; */
+  padding: 0 30rpx;
+}
+
+
+
+/* css rolling */
+
+.notice-text-wrapper {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  margin-right: 20rpx;
+}
+.notice-text {
+  position: relative;
+  font-size: 28rpx;
+  display: inline-block;
+  white-space: nowrap;
+  box-sizing: border-box;
+  animation: marquee 10s linear infinite;
+}
+
+/* Make it move */
+@keyframes marquee {
+  from { transform: translateX(100%) }
+  to { transform: translateX(-100%) }
+}
+
+
+

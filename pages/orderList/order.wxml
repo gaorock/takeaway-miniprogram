@@ -1,0 +1,24 @@
+<import src="../../templates/orderList/orderList.wxml" />
+<!--pages/order/order.wxml-->
+<view class="tab-menu-wrapper">
+  <view class="tab{{tabIndex === index?' active':''}}"
+    bind:tap="changeTab" data-index="{{index}}"
+    wx:for="{{['全部订单','待评价','退款']}}" wx:key="index">
+    {{item}}
+  </view>
+</view>
+<scroll-view class="order-list-container" scroll-y="{{true}}">
+  <block wx:if="{{login === true}}">
+    <template wx:if="{{list.length>0}}" is="orderlist" data="{{item}}" wx:for="{{list}}" wx:key="index"/>
+    <view wx:if="{{list.length === 0}}" class="noorder">
+      <image src="/assets/images/noorder.png" mode="aspectFit" class="image" />
+      <text>暂无订单</text>
+      <view bind:tap="goHome">去下单</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="noorder">
+      <view bind:tap="login">登陆</view>
+    </view>
+  </block>
+</scroll-view>

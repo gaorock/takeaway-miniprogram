@@ -1,0 +1,135 @@
+.select-multi-wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 101;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.select-multi-cover {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.select-multi-box {
+  position: relative;
+  background-color: #fff;
+  width: 80%;
+  animation: outbig 250ms ease-in-out;
+  border-radius: 40rpx;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.select-multi-box .box-main {
+  padding: 10rpx 40rpx;
+}
+
+.select-multi-box .box-main .title {
+  font-size: 36rpx;
+  padding: 20rpx 0;
+}
+
+.select-multi-box .box-main .section {
+  padding-bottom: 10rpx;
+}
+
+.select-multi-box .box-main .section .section-title {
+  font-size: 24rpx;
+}
+
+.select-multi-box .box-main .section .section-items {
+  padding-bottom: 30rpx;
+}
+
+.select-multi-box .box-main .section .section-item {
+  display: inline-block;
+  font-size: 22rpx;
+  padding: 10rpx 22rpx;
+  background-color: #f2f2f2;
+  margin: 16rpx 16rpx 0 0;
+  border-radius: 20rpx;
+  color: #666;
+}
+
+.select-multi-box .box-main .section .section-item.active {
+  background-color: #ffeded;
+  color: #fe4a4b;
+}
+
+.select-multi-box .box-main .amount {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.select-multi-box .box-main .amount .text {
+  font-size: 24rpx;
+  flex: 1;
+}
+
+.select-multi-box .box-main .selected {
+  color: #666;
+  font-size: 24rpx;
+}
+
+.select-multi-box .box-bottom {
+  padding: 10rpx 40rpx;
+  height: 100rpx;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+}
+
+.select-multi-box .box-bottom .price {
+  flex: 1;
+  font-size: 24rpx;
+}
+
+.select-multi-box .box-bottom .price .yan {
+  font-size: 46rpx;
+}
+
+.select-multi-box .box-bottom .button {
+  background-color: #000;
+  color: #fff;
+  padding: 14rpx 50rpx;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+}
+
+.select-multi-box .box-bottom .disabled {
+  background-color: #999;
+  color: #eee;
+}
+
+.select-multi-close {
+  position: relative;
+  width: 80rpx;
+  height: 80rpx;
+  padding: 10rpx;
+  margin: 10rpx;
+  z-index: 2;
+}
+
+@keyframes outbig {
+  0% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

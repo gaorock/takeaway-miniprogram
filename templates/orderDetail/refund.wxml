@@ -1,0 +1,13 @@
+<template name="order-refund">
+  <view class="top-wrapper">
+    <text class="title-status">退款中</text>
+    <image src="/assets/images/bg-refund.png" mode="widthFix" />
+  </view>
+  <view class="sec refund-container">
+    <view class="status-text">等待商家确认退款</view>
+    <view class="contact-shop">
+      <image src="/assets/icons/detail-shop.png" mode="widthFix" />
+      <text>联系商家</text>
+    </view>
+  </view>
+</template>

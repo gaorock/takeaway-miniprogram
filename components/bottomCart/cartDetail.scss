@@ -1,0 +1,149 @@
+.cart-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+}
+
+.cart-detail-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.cart-detail-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  animation: fadein 200ms ease-in-out;
+  z-index: 0;
+}
+
+.cart-detail-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30rpx 40rpx;
+  /* height: 50%; */
+  min-height: 30%;
+  max-height: 70%;
+  border-radius: 25rpx 25rpx 0 0;
+  background-color: #fff;
+  animation: slideUp 200ms ease-in-out;
+  z-index: 1;
+
+  .upper-sec {
+    display: flex;
+    padding-bottom: 26rpx;
+    border-bottom: 1px solid #eee;
+
+    .cart-text {
+      font-size: 30rpx;
+      flex: 1;
+    }
+
+    .clear-wrapper {
+      display: flex;
+      align-items: center;
+      // justify-content: flex-end;
+      
+      color: #999;
+      font-size: 28rpx;
+
+      .clear-icon {
+        width: 30rpx;
+        height: 30rpx;
+        margin: 0 4rpx;
+      }
+    }
+  }
+
+
+  .lower-sec {
+    height: 60vh;
+    padding-top: 30rpx;
+
+
+    .cartitem-wrapper {
+      display: flex;
+      margin-bottom: 36rpx;
+
+      .cartitem-image {
+        width: 150rpx;
+        height: 150rpx;
+        border-radius: 10rpx;
+      }
+
+
+      .item-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding-left: 20rpx;
+
+
+        .item-title {
+          font-size: 30rpx;
+        }
+
+        .item-tags {
+          font-size: 24rpx;
+          color: #666;
+        }
+
+        .item-nums {
+          flex: 1;
+          display: flex;
+          align-items: flex-end;
+          
+          .item-price { 
+            flex: 1;
+            font-size: 26rpx;
+
+            .yan {
+              font-size: 40rpx;
+            }
+
+            .unit {
+              color: #999;
+            }
+
+
+          }
+        }
+
+
+      }
+    }
+  }
+  
+
+
+}
+
+.placeholder {
+  height: 160rpx;
+  width: 100%;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

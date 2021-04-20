@@ -1,0 +1,70 @@
+page {
+  padding: 30rpx;
+  background-color: #f2f2f2;
+}
+
+.add-address {
+  background-color: #fff;
+  text-align: center;
+  padding: 30rpx 0;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+}
+
+.add-address image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.address-item {
+  padding: 40rpx 0;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.address-item .details {
+  display: flex;
+  align-items: center;
+}
+
+.address-item .details .info {
+  flex: 1;
+}
+
+.address-item .details .info .info-address {
+  font-size: 28rpx;
+}
+
+.address-item .details .info .info-address text {
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  background-color: #ffeded;
+  color: #fe4a4b;
+}
+
+.address-item .details .info .info-contact {
+  padding-top: 10rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.address-item .details .edit-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.address-item .set-default {
+  font-size: 22rpx;
+  color: #999;
+  display: flex;
+  align-items: center;
+  padding-top: 10rpx;
+}
+
+.address-item .set-default image {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.address-item .set-default text {
+  padding-left: 10rpx;
+}

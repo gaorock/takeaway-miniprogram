@@ -1,0 +1,99 @@
+.order-pay-container {
+  padding: 30rpx;
+}
+
+.order-pay-container .icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.order-pay-container .pay-summary {
+  text-align: center;
+  padding: 100rpx 0;
+}
+
+.order-pay-container .pay-summary .total {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.order-pay-container .pay-summary .total text {
+  font-size: 60rpx;
+}
+
+.order-pay-container .pay-summary .number {
+  font-size: 28rpx;
+}
+
+.order-pay-container .pay-wrapper {
+  padding-bottom: 100rpx;
+}
+
+.order-pay-container .pay-wrapper .pay-title-text {
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.order-pay-container .pay-wrapper .pay-method {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 130rpx;
+  margin: 20rpx 0;
+  padding: 0 30rpx;
+  border: 1px solid #eee;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.order-pay-container .pay-wrapper .pay-method .tick {
+  position: absolute;
+  display: none;
+  width: 50rpx;
+  height: 50rpx;
+  bottom: -1rpx;
+  right: 0;
+}
+
+.order-pay-container .pay-wrapper .pay-method.active {
+  position: relative;
+  border: 1px solid #fe4a4b;
+}
+
+.order-pay-container .pay-wrapper .pay-method.active .tick {
+  display: block;
+}
+
+.order-pay-container .pay-wrapper .pay-method .weixin-text {
+  padding: 0 20rpx;
+  font-size: 30rpx;
+}
+
+.order-pay-container .pay-wrapper .pay-method .yue-text {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20rpx;
+  font-size: 30rpx;
+}
+
+.order-pay-container .pay-wrapper .pay-method .yue-text .num {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.order-pay-container .button-group .button {
+  width: 100%;
+  padding: 20rpx 0;
+  margin: 30rpx 0;
+  background-color: #f2f2f2;
+  color: #999;
+  text-align: center;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+}
+
+.order-pay-container .button-group .button.active {
+  color: #fff;
+  background-color: #fe4a4b;
+}

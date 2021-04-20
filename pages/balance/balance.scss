@@ -1,0 +1,115 @@
+.balance-wrapper {
+  position: relative;
+  z-index: 1;
+  padding: 30rpx;
+  padding-bottom: 50rpx;
+
+
+  .balance-detail {
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 30rpx 0;
+
+    .balance-detail-title {
+      
+      padding: 10rpx 30rpx;
+      font-weight: bold;
+      font-size: 34rpx;
+      border-bottom: 1px solid #eee;
+
+      &>text {
+        position: relative;
+        padding: 10rpx 0;
+
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 30%;
+          height: 5rpx;
+          background-color: #fe4a4b;
+        }
+      }
+
+      
+    }
+
+
+    .balance-wrapper {
+      padding: 0 30rpx;
+    }
+
+    .balance-item {
+      display: flex;
+      align-items: center;
+      padding: 30rpx 0;
+      border-bottom: 1px solid #eee;
+
+      .left {
+        flex: 1;
+
+        .balance-type {
+          font-size: 28rpx;
+        }
+
+        .balance-date {
+          font-size: 24rpx;
+          color: #999;
+        }
+      }
+
+      .right {
+        font-size: 26rpx;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+    }
+
+    .noitem {
+      text-align: center;
+      padding: 50rpx 0;
+    }
+  }
+}
+
+
+.personal-sec {
+  background-color: #fff;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.personal-money-wrapper {
+  display: flex;
+  padding: 50rpx 40rpx;
+  align-items: center;
+
+ .money {
+    flex: 1;
+
+    .amount {
+      font-family: 'DIN';
+      font-size: 46rpx;
+    }
+
+    .text {
+      font-size: 24rpx;
+      color: #333;
+    }
+  }
+
+  .topup {
+    font-size: 24rpx;
+    background-color: #fe4a4b;;
+    color: #fff;
+    padding: 8rpx 30rpx;
+    border-radius: 30rpx;
+  }
+
+}

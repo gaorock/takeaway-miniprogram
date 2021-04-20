@@ -1,0 +1,59 @@
+<!--pages/addressAdd/addressAdd.wxml-->
+<view class="address-alter-wrapper">
+  <view class="info-line">
+    <view class="info-title">联系人</view>
+    <view class="info-detail">
+      <input placeholder="请输入联系人姓名" placeholder-class="input-placeholder" bind:input="onInputName" value="{{contact}}" />
+      <view>
+        <text wx:for="{{sex}}" wx:key="index" bind:tap="onChangeSex" data-id="{{index}}"
+        class="sex{{index === sexIndex?' active':''}}">{{item}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="info-line">
+    <view class="info-title">联系电话</view>
+    <view class="info-detail">
+      <input type="digit" placeholder-class="input-placeholder" placeholder="请输入联系人电话" bind:input="onInputPhone" value="{{phone}}"/>
+    </view>
+  </view>
+  <view class="info-line">
+    <view class="info-title">标签</view>
+    <view class="info-detail">
+      <text wx:for="{{tags}}" wx:key="index" bind:tap="onChangeTag" data-id="{{index}}"
+      class="tag{{index === tagIndex?' active':''}}">{{item}}</text>
+    </view>
+  </view>
+  <view class="info-line">
+    <view class="info-title">收货地址</view>
+    <picker class="flex-1" mode="region" bind:change="onRegionChange" value="{{region}}">
+      <view class="info-detail">
+        <view class="flex-1{{locationChanged?'':' placeholder'}}">{{locationString}}</view>
+        <image src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix" />
+      </view>
+    </picker>
+    
+  </view>
+  <view class="info-line">
+    <view class="info-title">详细地址</view>
+    <view class="info-detail" wx:if="{{area.length === 0}}"> 
+      <input value="{{detail}}" placeholder="街道、小区、楼牌等" placeholder-class="input-placeholder" bind:input="onInputDetail" />
+    </view>
+    <picker wx:else mode="selector" class="flex-1"
+    value="{{picked}}" range="{{area}}" bind:change="onAreaChange">
+      <view class="info-detail">
+        <view class="flex-1{{picked === null?' placeholder':''}}">{{picked === null?'请选择配送区域':area[picked]}}</view>
+        <image src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix"  />
+      </view>
+    </picker>
+    
+  </view>
+</view>
+
+
+<view class="save-wrapper">
+  <view bind:tap="submit">保存地址</view>
+  <view bind:tap="delete" class="del" wx:if="{{id}}">删除地址</view>
+</view>
+
+
+<Error wx:if="{{error}}" message="{{error}}" bind:onErrorDown="onErrorDown" />

@@ -1,0 +1,19 @@
+<template name="order-deliver">
+  <view class="top-wrapper">
+    <text class="title-status">配送中</text>
+    <image src="/assets/images/bg-deliver.png" mode="widthFix" />
+  </view>
+  <view class="sec status-container">
+    <view class="title-text">骑手正在配送，请耐心等待</view>
+    <view class="utils-done">
+      <view class="seperator">
+        <image src="/assets/icons/detail-refund.png" mode="widthFix" />
+        <text>申请退款</text>
+      </view>
+      <view>
+        <image src="/assets/icons/detail-shop.png" mode="widthFix" />
+        <text>联系商家</text>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "Cart": "../../components/bottomCart/bottomCart",
+    "Coupon": "../../components/coupon/coupon",
+    "Select": "../../components/selectItem/selectItem",
+    "Loading": "../../components/loading/loading",
+    "Menu": "../../components/menu/menu",
+    "Commits": "../../components/commits/commits",
+    "Popup": "../../components/popup/coupon"
+  }
+}

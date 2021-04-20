@@ -1,0 +1,22 @@
+<!--components/loading/loading.wxml-->
+<!-- <view class="loading-container">
+  <view class="loading"> 
+    <view class="icon"></view>
+    <view class="icon"></view>
+    <view class="icon"></view>
+    <view class="icon"></view>
+    <view class="icon"></view>
+  </view>
+</view> -->
+
+<div class="loader">
+  <span class="loader-block"></span>
+  <span class="loader-block"></span>
+  <span class="loader-block"></span>
+  <span class="loader-block"></span>
+  <span class="loader-block"></span>
+  <span class="loader-block"></span>
+  <span class="loader-block"></span>
+  <span class="loader-block"></span>
+  <span class="loader-block"></span>
+</div>

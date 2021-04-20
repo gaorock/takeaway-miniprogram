@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "我的优惠卷",
+  "backgroundColor": "#fefefe",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {}
+}

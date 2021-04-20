@@ -1,0 +1,78 @@
+.address-alter-wrapper .flex-1 {
+  flex: 1;
+}
+
+.address-alter-wrapper .info-line {
+  display: flex;
+  padding: 40rpx 30rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.address-alter-wrapper .info-line .info-title {
+  width: 160rpx;
+  font-size: 28rpx;
+}
+
+.address-alter-wrapper .info-line .info-detail {
+  flex: 1;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+}
+
+.address-alter-wrapper .info-line .info-detail image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.address-alter-wrapper .info-line .info-detail .sex {
+  font-size: 26rpx;
+  padding: 5rpx 16rpx;
+  width: 100rpx;
+  border-radius: 6rpx;
+  margin-left: 20rpx;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.address-alter-wrapper .info-line .info-detail .tag {
+  text-align: center;
+  font-size: 26rpx;
+  padding: 5rpx 0;
+  width: 90rpx;
+  border-radius: 6rpx;
+  margin-right: 20rpx;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.address-alter-wrapper .info-line .info-detail .sex.active, .address-alter-wrapper .info-line .info-detail .tag.active {
+  border-color: #fe4a4b;
+  color: #fe4a4b;
+}
+
+.address-alter-wrapper .info-line .placeholder {
+  color: #ccc;
+}
+
+.save-wrapper {
+  padding: 0 30rpx;
+  margin-top: 100rpx;
+}
+
+.save-wrapper > view {
+  text-align: center;
+  width: 100%;
+  padding: 20rpx 0;
+  background-color: #fe4a4b;
+  color: #fff;
+  font-size: 26rpx;
+  border-radius: 50rpx;
+  margin: 50rpx 0;
+}
+
+.save-wrapper > view.del {
+  color: #fe4a4b;
+  border: 1px solid #fe4a4b;
+  background-color: #fff;
+}

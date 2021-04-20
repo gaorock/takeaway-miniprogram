@@ -1,0 +1,72 @@
+/* Bottom section */
+/* color: #fe4a4b */
+
+
+.home-bottom-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+}
+
+/* Tabs */
+
+.home-tab-wrappper {
+  /* width: 90%; */
+  height: 120rpx;
+  /* margin: 0 auto; */
+  /* background-color: #fff; */
+  padding: 0 5rpx;
+  display: flex;
+  align-items: center;
+}
+
+.tab-menu, .tab-commits {
+  position: relative;
+  display: inline-block;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.tab-menu {
+  padding: 6rpx 40rpx;
+  margin-right: 60rpx;
+}
+
+.tab-commits-text {
+  position: relative;
+  padding: 6rpx 0;
+}
+
+
+.tab-commits-no {
+  color: #666;
+}
+
+
+.tab-menu.active,
+.tab-commits-text.active 
+{
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #000;
+}
+
+
+
+.tab-menu.active:before,
+.tab-commits-text.active:before 
+{
+  position: absolute;
+  content: '';
+  width: 40rpx;
+  height: 5rpx;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fe4a4b;
+  border-radius: 4rpx;
+}
+
+
+

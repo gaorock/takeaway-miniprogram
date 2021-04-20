@@ -1,0 +1,178 @@
+$invalid: #ccc;
+
+page {
+  background-color: #f2f2f2;
+}
+
+.coupon-cate-tap { 
+  position: relative;
+  width: 100vw;
+  height: 128rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: flex-end;
+  padding: 10rpx 30rpx;
+
+  &>view {
+    margin-right: 50rpx;
+    font-size: 30rpx;
+    color: #555;
+    padding: 10rpx 0;
+
+    &.active {
+      color: #000;
+      font-weight: bold;
+      font-size: 40rpx;
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 42rpx;
+        height: 6rpx;
+        background-color: #fe4a4b;
+      }
+    }
+  }
+}
+
+.coupon-list-wrapper {
+  position: relative;
+  padding: 30rpx;
+  height: calc(100vh - 128rpx);
+
+  .coupon-box {
+    display: flex;
+    align-items: center;
+    height: 200rpx;
+    background-color: #fff;
+    margin-bottom: 30rpx;
+
+    &.invalid {
+      .coupon-left {
+        background-image: linear-gradient(to right, $invalid 50%, transparent 50%), linear-gradient(to right, $invalid 50%, transparent 50%), linear-gradient(to bottom, $invalid 50%, transparent 50%), linear-gradient(to bottom, $invalid 50%, transparent 50%);
+        .money, .limit {
+          color: $invalid;
+        }
+      }
+      
+      .coupon-right {
+        .coupon-type {
+          .coupon-type-text,
+          .expires {
+            color: $invalid;
+          }
+        }
+        .size {
+          color: $invalid;
+        }
+      }
+    }
+  
+    .coupon-left {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      width: 220rpx;
+      background-image: linear-gradient(to right, #ffdbdb 50%, transparent 50%), linear-gradient(to right, #ffdbdb 50%, transparent 50%), linear-gradient(to bottom, #ffdbdb 50%, transparent 50%), linear-gradient(to bottom, #ffdbdb 50%, transparent 50%);
+      background-position: left top, left bottom, left top, right top;
+      background-repeat: no-repeat, no-repeat, no-repeat, repeat-y;
+      background-size: 0, 0, 0, 1px 10px;
+
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        width: 32rpx;
+        height: 32rpx;
+        background-color: #f2f2f2;
+        border-radius: 50%;
+        right: -16rpx;
+      }
+
+      &:before {
+        top: -16rpx;
+      }
+
+      &:after {
+        bottom: -16rpx;
+      }
+
+      .money {
+        color: #fe4a4b;
+        font-family: 'DIN';
+        font-size: 30rpx;
+
+        text {
+          font-size: 70rpx;
+        }
+      }
+      .limit {
+        font-size: 24rpx;
+        color: #999;
+      }
+    }
+  
+    .coupon-right {
+      flex: 1;
+      padding-left: 50rpx;
+      padding-right: 30rpx;
+      display: flex;
+      align-items: center;
+
+      .coupon-type {
+        flex: 1;
+
+        .coupon-type-text {
+          font-size: 32rpx;
+          font-weight: bold;
+          padding-bottom: 10rpx;
+        }
+      }
+
+
+      .expires {
+        font-size: 24rpx;
+        color: #333;
+      }
+
+      .size  {
+        font-size: 26rpx;
+        padding: 6rpx 12rpx;
+      }
+      .tobeuse {
+        background-color: #fe4a4b;
+        color: #fff;
+        border-radius: 30rpx;
+      }
+
+      .else {
+        color: #aaa;
+      }
+    }
+  
+  }
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  view {
+    font-size: 26rpx;
+    padding: 10rpx 50rpx;
+    border: 1px solid #fe4a4b;
+    border-radius: 30rpx;
+    color: #fe4a4b;
+  }
+}
+

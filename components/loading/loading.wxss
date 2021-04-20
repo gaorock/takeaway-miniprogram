@@ -1,0 +1,84 @@
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 73.33333rpx;
+  height: 73.33333rpx;
+  margin-left: -36.66667rpx;
+  margin-top: -36.66667rpx;
+}
+
+.loader-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  opacity: 0;
+  width: 20rpx;
+  height: 20rpx;
+  background: #ffeded;
+  animation: show 0.88s step-end infinite alternate, pulse 0.88s linear infinite alternate;
+}
+
+.loader-block:nth-child(1) {
+  transform: translate(0, 0);
+  animation-delay: 0.065s;
+}
+
+.loader-block:nth-child(2) {
+  transform: translate(26.66667rpx, 0);
+  animation-delay: 0.13s;
+}
+
+.loader-block:nth-child(3) {
+  transform: translate(53.33333rpx, 0);
+  animation-delay: 0.195s;
+}
+
+.loader-block:nth-child(4) {
+  transform: translate(0, 26.66667rpx);
+  animation-delay: 0.325s;
+}
+
+.loader-block:nth-child(5) {
+  transform: translate(26.66667rpx, 26.66667rpx);
+  animation-delay: 0.13s;
+}
+
+.loader-block:nth-child(6) {
+  transform: translate(53.33333rpx, 26.66667rpx);
+  animation-delay: 0.455s;
+}
+
+.loader-block:nth-child(7) {
+  transform: translate(0, 53.33333rpx);
+  animation-delay: 0.39s;
+}
+
+.loader-block:nth-child(8) {
+  transform: translate(26.66667rpx, 53.33333rpx);
+  animation-delay: 0.26s;
+}
+
+.loader-block:nth-child(9) {
+  transform: translate(53.33333rpx, 53.33333rpx);
+}
+
+@keyframes pulse {
+  from,
+  40% {
+    background: #ffeded;
+  }
+  to {
+    background: #fe4a4b;
+  }
+}
+
+@keyframes show {
+  from, 40% {
+    opacity: 0;
+  }
+  41%, to {
+    opacity: 1;
+  }
+}

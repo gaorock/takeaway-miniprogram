@@ -1,0 +1,8 @@
+<!--components/openSetting/openSetting.wxml-->
+<view class="confirm-setting{{open?'':' hide'}}">
+  <view class="message">
+    <view>微信授权失败</view>
+    <view class="button" bind:tap="setup">打开小程序权限设置</view>
+  </view>
+  <view class="cover" bind:tap="close"></view>
+</view>

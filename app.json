@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/checkout/checkout",
+    "pages/pay/pay",
+    "pages/order/order",
+    "pages/orderDetail/orderDetail",
+    "pages/personal/personal",
+    "pages/topup/topup",
+    "pages/balance/balance",
+    "pages/coupon/coupon",
+    "pages/address/address",
+    "pages/addressAdd/addressAdd",
+    "pages/protocol/protocol",
+    "pages/evaluate/evaluate"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#b3b3b3",
+    "selectedColor": "#000",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/icons/tabbar/home.png",
+        "selectedIconPath": "assets/icons/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "assets/icons/tabbar/orderlist.png",
+        "selectedIconPath": "assets/icons/tabbar/orderlist-active.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "个人中心",
+        "iconPath": "assets/icons/tabbar/person.png",
+        "selectedIconPath": "assets/icons/tabbar/person-active.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "授权定位后，方便店铺快捷的计算配送距离等信息。"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

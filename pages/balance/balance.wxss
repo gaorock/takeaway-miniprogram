@@ -1,0 +1,107 @@
+.balance-wrapper {
+  position: relative;
+  z-index: 1;
+  padding: 30rpx;
+  padding-bottom: 50rpx;
+}
+
+.balance-wrapper .balance-detail {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx 0;
+}
+
+.balance-wrapper .balance-detail .balance-detail-title {
+  padding: 10rpx 30rpx;
+  font-weight: bold;
+  font-size: 34rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.balance-wrapper .balance-detail .balance-detail-title > text {
+  position: relative;
+  padding: 10rpx 0;
+}
+
+.balance-wrapper .balance-detail .balance-detail-title > text:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 5rpx;
+  background-color: #fe4a4b;
+}
+
+.balance-wrapper .balance-detail .balance-wrapper {
+  padding: 0 30rpx;
+}
+
+.balance-wrapper .balance-detail .balance-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1px solid #eee;
+}
+
+.balance-wrapper .balance-detail .balance-item .left {
+  flex: 1;
+}
+
+.balance-wrapper .balance-detail .balance-item .left .balance-type {
+  font-size: 28rpx;
+}
+
+.balance-wrapper .balance-detail .balance-item .left .balance-date {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.balance-wrapper .balance-detail .balance-item .right {
+  font-size: 26rpx;
+}
+
+.balance-wrapper .balance-detail .balance-item:last-child {
+  border-bottom: none;
+}
+
+.balance-wrapper .balance-detail .noitem {
+  text-align: center;
+  padding: 50rpx 0;
+}
+
+.personal-sec {
+  background-color: #fff;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.personal-money-wrapper {
+  display: flex;
+  padding: 50rpx 40rpx;
+  align-items: center;
+}
+
+.personal-money-wrapper .money {
+  flex: 1;
+}
+
+.personal-money-wrapper .money .amount {
+  font-family: 'DIN';
+  font-size: 46rpx;
+}
+
+.personal-money-wrapper .money .text {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.personal-money-wrapper .topup {
+  font-size: 24rpx;
+  background-color: #fe4a4b;
+  color: #fff;
+  padding: 8rpx 30rpx;
+  border-radius: 30rpx;
+}

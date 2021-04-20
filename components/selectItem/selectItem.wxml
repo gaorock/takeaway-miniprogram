@@ -1,0 +1,40 @@
+
+<!--components/selectItem/selectItem.wxml-->
+<view class="select-multi-wrapper">
+  <Loading wx:if="{{!product}}" />
+  <view wx:else class="select-multi-box">
+    
+    <view class="box-main">
+      <view class="title">{{product.title}}</view>
+      <view class="section" wx:for="{{multiChoose}}" 
+            wx:key="index" wx:for-index="cateIndex" wx:for-item="cate">
+        <view class="section-title">{{cate.attr}}</view>
+        <view class="section-items">
+          <view 
+          class="section-item {{choosenArray[cateIndex][index][1]?'active':''}}" 
+          wx:for="{{cate.param}}" 
+          wx:for-item="favor"
+          wx:key="index"
+          bind:tap="tapOption"
+          data-cateindex="{{cateIndex}}"
+          data-optindex="{{index}}"
+          >{{favor.param}}</view>
+        </view>
+      </view>
+      <view class="amount" wx:if="{{product.stock}}">
+        <text class="text">数量</text>
+        <Amount amount="{{amount}}" bind:amountChange="onAmountChange"/>
+      </view>
+      <view class="selected">已选：{{selectedString || '无'}}</view>
+    </view>
+    <view class="box-bottom">
+      <view class="price">¥<text class="yan">{{product.price[0]}}</text>.{{product.price[1]}}</view>
+      <view class="button{{product.stock?'':' disabled'}}" 
+        bind:tap="onSubmit" data-disabled="{{!product.stock}}"
+      >{{product.stock?'选好了':'售罄'}}</view>
+    </view>
+  </view>
+  <image wx:if="{{product}}" class="select-multi-close" src="/assets/icons/highlight_off-black-24dp.svg" mode="aspectFit" catch:tap="closeSelect" />
+  
+  <view class="select-multi-cover" bind:tap="closeSelect"></view>
+</view>

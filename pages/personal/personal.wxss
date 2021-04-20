@@ -1,0 +1,121 @@
+page {
+  background-color: #f2f2f2;
+  padding: 40rpx;
+}
+
+.personal-header-wrapper {
+  padding: 20rpx 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 50rpx;
+}
+
+.personal-header-wrapper .userinfo-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #ccc;
+}
+
+.personal-header-wrapper .userinfo-nickname {
+  padding-left: 20rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.personal-sec {
+  background-color: #fff;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.personal-order-wrapper {
+  display: flex;
+  padding: 40rpx 0;
+}
+
+.personal-order-wrapper > view {
+  flex: 1;
+  text-align: center;
+}
+
+.personal-order-wrapper > view:nth-child(2) {
+  padding: 0 15rpx 0 30rpx;
+}
+
+.personal-order-wrapper > view:nth-child(3) {
+  padding: 0 30rpx 0 15rpx;
+}
+
+.personal-order-wrapper > view .text {
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+
+.personal-order-wrapper image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.personal-money-wrapper {
+  display: flex;
+  padding: 40rpx;
+  align-items: center;
+}
+
+.personal-money-wrapper .money {
+  flex: 1;
+}
+
+.personal-money-wrapper .money .amount {
+  font-family: 'DIN';
+  font-size: 46rpx;
+  color: #fe4a4b;
+}
+
+.personal-money-wrapper .money .text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.personal-money-wrapper .detail {
+  font-size: 24rpx;
+  background-color: #000;
+  color: #fff;
+  padding: 8rpx 30rpx;
+  border-radius: 30rpx;
+}
+
+.personal-manage-wrapper {
+  padding-top: 30rpx;
+}
+
+.personal-manage-wrapper .manage-line {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+}
+
+.personal-manage-wrapper .manage-line .manage-text {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.personal-manage-wrapper .manage-line .manage-text text {
+  padding-left: 10rpx;
+  font-size: 30rpx;
+}
+
+.personal-manage-wrapper .manage-line .before {
+  width: 30rpx;
+  height: 30rpx;
+  margin: 0 10rpx;
+}
+
+.personal-manage-wrapper .manage-line .arrow {
+  width: 40rpx;
+  height: 40rpx;
+}

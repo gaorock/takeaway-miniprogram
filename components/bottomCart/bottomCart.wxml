@@ -1,0 +1,52 @@
+<view class="cart-container"> 
+  <!-- Cart -->
+  <view class="cart-wrapper">
+    <view class="cart-total" bind:tap="toggleCart">
+      <view class="bucket-wrapper">
+        <image src="/assets/icons/cart.png" class="bucket-icon" mode="aspectFit"></image>
+        <text class="item-no">{{total}}</text>
+      </view>
+      <view class="checkout-money">
+        <view>
+          <text class="cart-text-tp-1">¥</text>
+          <text class="cart-text-tp-2">{{price[0]}}</text>
+          <text class="cart-text-tp-3">.{{price[1] || '00'}}</text>
+          <text class="cart-text-tp-4">(起送费¥20.00)</text>
+        </view>
+        <text class="cart-text-bt">配送以下单信息为准 | 支持自取</text>
+      </view>
+    </view>
+    <view class="cart-checkout" bind:tap="checkout">去结算</view>
+  </view>
+  <!-- Cart Detail -->
+  <view wx:if="{{isCartOpen}}" class="cart-detail-wrapper">
+    <view class="cart-detail-cover" capture-catch:tap="closeCart"></view>
+    <view class="cart-detail-box">
+      <view class="upper-sec">
+        <text class="cart-text">购物车</text>
+        <view class="clear-wrapper" bind:tap="onClearOutCart">
+          <image class="clear-icon" src="/assets/icons/clear.png" mode="widthFix"/>
+          <text>清空</text>
+        </view>
+      </view>
+      <scroll-view class="lower-sec" scroll-y="{{true}}">
+        <view wx:for="{{cartList}}" wx:key="key" class="cartitem-wrapper">
+          <image src="{{item.thumbnail}}" class="cartitem-image" mode="aspectFill" />
+          <view class="item-info">
+            <text class="item-title">{{item.name}}</text>
+            <text class="item-tags">{{item.tag}}</text>
+            <view class="item-nums">
+              <view class="item-price currency">¥<text class="yan">{{item.price[0]}}</text>.{{item.price[1]}}<text wx:if="{{item.unit}}" class="unit">/{{item.unit}}</text></view>
+              <Amount amount="{{item.amount}}"
+              bind:amountChange="onAmountChange" 
+              data-id="{{item.id}}"
+              data-spec="{{item.multi?item.tag:'normal'}}"/>
+            </view>
+          </view>
+        </view>
+        <view class="placeholder"></view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+

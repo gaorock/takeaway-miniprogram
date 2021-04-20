@@ -1,0 +1,48 @@
+@import './homeTopInfo.wxss';
+@import './homeMain.wxss';
+
+.home-wrapper {
+  background-color: #fff;
+}
+
+/**index.wxss**/
+.top-banner-wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.top-banner {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  min-height: 240rpx;
+  /* height: 240rpx; */
+}
+
+.image-holder {
+  height: 240rpx;
+  background-color: transparent;
+}
+
+
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 58rpx;
+  height: 58rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  margin-top: 200px;
+}

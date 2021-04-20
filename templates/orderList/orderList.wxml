@@ -1,0 +1,38 @@
+<template name="orderlist">
+  <view class="template-order">
+    <view class="title">
+      <text class="order-title">订单状态</text>
+      <text class="order-status-{{item.status}}">{{item.text}}</text>
+    </view>
+    <view class="details" bind:tap="navigate" data-id="{{item.id}}" data-status="{{item.status}}">
+      <view wx:if="{{item.single}}" class="items single">
+        <image src="/assets/images/drink1.png" mode="aspectFill" class="pic" />
+        <view>
+          <text>笀果百香四季春茶</text>
+        </view>
+      </view>
+      <view wx:else class="items notsingle">
+        <view class="item" wx:for="{{[1,2,3]}}" wx:key="index">
+          <image src="/assets/images/drink1.png" mode="aspectFill" class="pic" />
+          <text>笀果百香四季春茶</text>
+        </view>
+        
+      </view>
+      <view class="summary">
+        <view class="price currency">¥<text>120.00</text></view>
+        <view class="amount">共1件</view>
+      </view>
+    </view>
+    <view wx:if="{{item.status !== 3}}" class="buttons">
+      <view wx:if="{{item.status === 2}}" class="onemore" catch:tap="oneMoreOrder" data-id="{{item.id}}">
+        <navigator url="/pages/index/index" open-type="switchTab">再来一单</navigator>
+      </view>
+      <view wx:if="{{item.status === 2}}" class="goto" catch:tap="evaluate" data-id="{{item.id}}">
+        <navigator url="/pages/evaluate/evaluate?id={{item.id}}">去评价</navigator>
+      </view>
+      <view wx:if="{{item.status === 1}}" class="goto" catch:tap="toPay" data-id="{{item.id}}">
+        <navigator url="/pages/pay/pay?id={{item.id}}&money=123">去付款</navigator>
+      </view>
+    </view>
+  </view>
+</template>

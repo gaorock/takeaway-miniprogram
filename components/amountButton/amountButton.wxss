@@ -1,0 +1,20 @@
+/* components/amountButton/amountButton.wxss */
+.item-button-amount {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.item-button-amount-icon {
+  width: 60rpx;
+  padding: 0 10rpx;
+  /* height: 50rpx; */
+}
+
+.item-button-amount-text {
+  height: 40rpx;
+  line-height: 40rpx;
+  width: 40rpx;
+  text-align: center;
+  font-size: 30rpx;
+}

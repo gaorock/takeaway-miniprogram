@@ -1,0 +1,219 @@
+@import '../../templates/orderDetail/finish.wxss';
+@import '../../templates/orderDetail/refund.wxss';
+@import '../../templates/orderDetail/deliver.wxss';
+
+.linear-background {
+  position: fixed;
+  width: 100%;
+  top: 0; 
+  z-index: 0;
+  
+  .block {
+    height: 5vh;
+    background-color: #fe4a4b;
+  }
+
+  .linear {
+    height: 20vh;
+    background: linear-gradient(to bottom, #fe4a4b, #f2f2f2);
+  }
+
+  .fill {
+    height: 75vh;
+    background-color: #f2f2f2;
+  }
+
+}
+
+
+.order-detail-container {
+  position: relative;
+  z-index: 1;
+  padding: 30rpx;
+
+  .sec {
+    background-color: #fff;
+    padding: 20rpx;
+    margin-bottom: 20rpx;
+    border-radius: 20rpx;
+
+    .title {
+      font-size: 28rpx;
+      padding: 10rpx 0;
+    }
+
+  }
+
+  
+
+  // --------------------------
+  .orderlist {
+    .price {
+      font-weight: bold;
+    }
+
+    .order-detail-title {
+      font-size: 28rpx;
+    }
+
+    .order-item {
+      display: flex;
+      padding: 20rpx 0;
+
+      &>image {
+        width: 120rpx;
+        height: 120rpx;
+        border-radius: 10rpx;
+      }
+
+      .right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding-left: 10rpx;
+      }
+
+      .title-wrapper {
+        display: flex;
+        font-size: 28rpx;
+        
+        .title {
+          flex:1;
+        }
+        .price {
+          font-size: 22rpx;
+          text {
+            font-size: 28rpx;
+            padding-left: 4rpx;
+          }
+        }
+      }
+
+      .tags {
+        font-size: 22rpx;
+        color: #999;
+      }
+
+      .amount {
+        flex: 1;
+        display: flex;
+        align-items: flex-end;
+        color: #999;
+        font-size: 28rpx;
+      }
+    }
+
+
+    .title-item {
+      display: flex;
+      font-size: 28rpx;
+      align-items: center;
+      padding: 20rpx 0;
+
+      .desc {
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        .icon {
+          width: 36rpx;
+          height: 30rpx;
+        }
+
+        .juan {
+          padding-left: 8rpx;
+        }
+
+        .deliver {
+          font-size: 24rpx;
+          color: #fe4a4b;
+        }
+        
+      }
+
+      .price {
+        display: flex;
+        align-items: center;  
+        font-size: 22rpx;
+
+        text {
+          font-size: 28rpx;
+          padding-left: 4rpx;
+        }
+
+        
+
+      }
+
+      .sum {
+        align-items: flex-end;  
+
+        .sum-text {
+          font-weight: normal;
+          // font-size: 28rpx;
+          padding: 0 10rpx;
+        }
+
+        .red {
+          display: flex;
+          align-items: flex-end;
+          font-size: 40rpx;
+          color: #fe4a4b;
+          line-height: 36rpx;
+
+          .sign {
+            font-weight: normal;
+            font-size: 28rpx;
+            padding: 0 5rpx;
+          }
+        }
+      }
+
+      
+
+    }
+  }
+  // ----------------------------------
+
+  .address-wrapper {
+    padding: 10rpx 0 20rpx 0;
+  }
+
+  .address {
+    font-weight: bold;
+    padding: 10rpx 0;
+  }
+  .contact {
+    color: #999;
+    font-size: 26rpx;
+  }
+
+
+  .detail-item {
+    display: flex;
+    margin: 30rpx 0;
+    // align-items: center;
+
+    .detail-title {
+      font-size: 28rpx;
+      color: #999;
+    }
+
+    .content {
+      font-size: 28rpx;
+      flex: 1;
+      text-align: right;
+
+    }
+
+    &.memo {
+      .content {
+        padding-left: 150rpx;
+        font-size: 26rpx;
+      }
+    }
+
+  }
+  
+
+}

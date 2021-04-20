@@ -1,0 +1,84 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "CheckOut Page",
+          "pathName": "pages/checkout/checkout",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pay",
+          "pathName": "pages/pay/pay",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "order page",
+          "pathName": "pages/order/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "detail",
+          "pathName": "pages/orderDetail/orderDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "personal center",
+          "pathName": "pages/personal/personal",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "balance",
+          "pathName": "pages/balance/balance",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "topup",
+          "pathName": "pages/topup/topup",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "coupon",
+          "pathName": "pages/coupon/coupon",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "address",
+          "pathName": "pages/address/address",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "addressAdd",
+          "pathName": "pages/addressAdd/addressAdd",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "evaluate",
+          "pathName": "pages/evaluate/evaluate",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

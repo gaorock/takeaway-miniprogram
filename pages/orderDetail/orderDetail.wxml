@@ -1,0 +1,92 @@
+<import src="../../templates/orderDetail/finish.wxml" />
+<import src="../../templates/orderDetail/deliver.wxml" />
+<import src="../../templates/orderDetail/refund.wxml" />
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="linear-background">
+  <view class="block"></view>
+  <view class="linear"></view>
+  <view class="fill"></view>
+</view>
+
+<view class="order-detail-container">
+  <template is="order-finish" wx:if="{{detailType === 2}}"></template>
+  <template is="order-deliver" wx:if="{{detailType === 0}}"></template>
+  <template is="order-refund" wx:if="{{detailType === 3}}"></template>
+  
+
+  <view class="sec orderlist">
+    <view class="title">商品信息</view>
+    <view class="order-item" wx:for="{{orderlist}}" wx:key="key"
+    wx:for-item="prod">
+      <image class="item-image" mode="aspectFill" src="{{prod.thumbnail}}" />
+      <view class="right">
+        <view class="title-wrapper">
+          <text class="title">{{prod.name}}</text>
+          <text class="price">¥<text>{{prod.price[0]}}.{{prod.price[1]}}</text></text></view>
+        <view class="tags">{{prod.tag}}</view>
+        <view class="amount">x{{prod.amount}}</view>
+      </view>
+    </view>
+
+    <view class="title-item">
+      <view class="desc">配送费<text class="deliver">（商家配送）</text></view>
+      <view class="price">¥<text>{{checkout.deliver_fee}}</text></view>
+    </view>
+    <view class="title-item">
+      <view class="desc">商品小计</view>
+      <view class="price">¥<text>{{checkout.total_price}}</text></view>
+    </view>
+    <view class="title-item">
+      <view class="desc">
+        <image src="/assets/icons/coupon-juan.png" mode="widthFix" class="icon" />
+        <text class="juan">优惠卷</text>
+      </view>
+      <view class="price">
+        -¥<text>{{checkout.youhui}}</text>
+      </view>
+    </view>
+    <view class="title-item">
+      <view class="desc"></view>
+      <view class="price sum">
+        <text class="sum-text">共2件商品 实付</text>
+        <text class="red"><text class="sign">¥</text>{{checkout.price || '10.10'}}</text>
+      </view>
+    </view>
+
+ </view>
+
+
+  <view class="sec">
+    <view class="title">地址信息</view>
+    <view class="address-wrapper">
+      <view class="address">河南省新乡市红旗区新飞大道高新技术创业园</view>
+      <view class="contact">李菁华  18749198122</view>
+    </view>
+  </view>
+  <view class="sec">
+    <view class="title">订单信息</view>
+    <view>
+      <view class="detail-item">
+        <text class="detail-title">订单状态</text>
+        <text class="content">已完成</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-title">订单编号</text>
+        <text class="content">2021030810010156</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-title">下单时间</text>
+        <text class="content">2021-03-08 08:54:21</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-title">付款时间</text>
+        <text class="content">2021-03-08 08:54:57</text>
+      </view>
+      <view class="detail-item memo">
+        <text class="detail-title">买家留言</text>
+        <view class="content">不用带吸管了，我这边有吸管，弄 的甜一点，喜欢甜的</view>
+      </view>
+    </view>
+  </view>
+</view>
+

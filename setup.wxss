@@ -1,0 +1,50 @@
+page, view, text, image, scroll-view, swiper {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.linear-background {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 0;
+}
+
+.linear-background .block {
+  height: 5vh;
+  background-color: #fe4a4b;
+}
+
+.linear-background .linear {
+  height: 20vh;
+  background: linear-gradient(to bottom, #fe4a4b, #f2f2f2);
+}
+
+.linear-background .fill {
+  height: 75vh;
+  background-color: #f2f2f2;
+}
+
+.login {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.login view {
+  font-size: 26rpx;
+  padding: 10rpx 50rpx;
+  border: 1px solid #fe4a4b;
+  border-radius: 30rpx;
+  color: #fe4a4b;
+}

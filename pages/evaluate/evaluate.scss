@@ -1,0 +1,128 @@
+page {
+  padding: 30rpx;
+}
+
+.title {
+  font-size: 30rpx  ;
+}
+
+.sec1 {
+
+  .products {
+    display: flex;
+    align-items: center;
+    padding: 30rpx 0;
+
+    .images {
+      display: flex;
+      flex: 1;
+    }
+
+    .image {
+      display: flex;
+      flex-direction: column;
+      margin-right: 16rpx;
+
+      image {
+        width: 140rpx;
+        height: 140rpx;
+      }
+  
+      text {
+        display: inline-block;
+        width: 140rpx;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .info {
+      text-align: right;
+      padding-bottom: 40rpx;
+      .currency {
+        font-size: 32rpx;
+        text {
+          font-size: 26rpx;
+        }
+      }
+      .count {
+        font-size: 26rpx;
+        padding-top: 10rpx;
+        color: #999;
+      }
+    }
+    
+  }
+
+}
+
+.sec2 {
+  padding: 60rpx;
+  // padding-bottom: 40rpx;
+  display: flex;
+  justify-content: space-around;
+
+  image {
+    width: 80rpx;
+    height: 80rpx;
+  }
+
+}
+
+.text {
+  text-align: center;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.commit {
+  background-color: #f2f2f2;
+  margin: 20rpx 0 40rpx 0;
+  padding: 40rpx;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+
+  textarea {
+    height: 260rpx;
+  }
+
+  .count {
+    text-align: right;
+    color: #aaa;
+  }
+}
+
+.photos {
+  padding: 30rpx 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170rpx, 1fr));
+
+  .photo {
+    width: 170rpx;
+    height: 170rpx;
+    border-radius: 14rpx;
+  }
+
+  .picker {
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    image {
+      width: 70rpx;
+      height: 70rpx;
+    }
+  }
+}
+
+.button {
+  width: 100%;
+  padding: 20rpx;
+  text-align: center;
+  background-color: #fe4a4b;
+  color: #fff;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  font-weight: 400;
+}

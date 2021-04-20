@@ -1,0 +1,88 @@
+<!--index.wxml-->
+<view wx:if="{{loading}}">
+  <Loading />
+</view>
+
+<view class="{{loading?'hidden':''}}">
+
+  <!-- Top Image -->
+  <view class="top-banner-wrapper">
+    <image src="{{shop.bg}}" mode="aspectFill" class="top-banner"></image>
+  </view>
+  
+  <!-- bind:scroll="onWrapperScroll"   -->
+  <scroll-view class="container" scroll-y >
+    <!-- image holder -->
+    <view class="image-holder"></view>
+    <!-- Middle Infomation -->
+    <view class="home-middle-wrapper">
+      <!-- upper - address-info -->
+      <view class="middle-part-1">
+        <view class="middle-sec-1">
+          <!-- <image src="/assets/icons/mixue.png" class="store-logo" mode="aspectFill"></image> -->
+          <image src="{{shop.logo}}" class="store-logo" mode="aspectFill" ></image>
+          <view class="store-text">蜜雪冰城（人民路店）</view>
+        </view>
+        <view class="middle-sec-2">
+          <view class="sec-2-left">
+            <image src="/assets/icons/clock.png" class="info-icon"></image>
+            <text>营业时间：{{shop.time}}</text>
+          </view>
+          <view class="sec-2-right">
+            <image src="/assets/icons/deliver.png" class="info-icon"></image>
+            <text>蜜雪冰城（人民路店）</text>
+          </view>
+        </view>
+        <view class="middle-sec-3">
+          <image src="/assets/icons/notice.png" class="notice-icon" mode="widthFix"></image>
+          <view class="notice-text-wrapper">
+            <view class="notice-text">{{shop.notice}}</view>
+          </view>
+        </view>
+      </view>
+      <!-- Coupon Component -->
+      <Coupon items="{{coupon}}"/>
+    </view>
+
+    <!-- Bottom Menu -->
+    <view class="home-bottom-wrapper">
+      <view class="home-tab-wrappper">
+        <view class="tab-menu {{tabIndex === 0?'active':''}}" bind:tap="setOrderActive">点餐</view>
+        <view class="tab-commits" bind:tap="setCommitActive">
+          <text class="tab-commits-text {{tabIndex === 1?'active':''}}">评论</text>
+          <text class="tab-commits-no">（{{totalCommits}}）</text>
+        </view>
+      </view>
+
+
+      <!-- home menu -->
+      <Menu wx:if="{{tabIndex === 0 && products.length > 0 && catelist.length > 0}}" 
+        cartItem="{{cartItem}}"
+        catelist="{{catelist}}"
+        products="{{products}}"
+        bind:amountChange="onAmountChange"
+        bind:openMultiSelect="onOpenMultiSelect"
+      />
+      
+
+      <Commits wx:if="{{tabIndex === 1}}" />
+    </view>
+    
+  </scroll-view>
+
+
+  <Cart 
+    total="{{cartTotal}}" price="{{priceTotal}}" 
+    wx:if="{{cartTotal > 0}}" 
+    bind:cartAmountChange="onCartAmountChange"
+    bind:clearoutcart="onClearOutCart"/>
+  <Select wx:if="{{showMultiID !== null}}"
+    bind:closeSelect="onCloseSelect"
+    bind:submitSelect="onSubmitSelect"
+    xid="{{showMultiID}}"/>
+
+  <Popup wx:if="{{popup}}" bind:onPopupClose="onPopupClose" />
+
+</view>
+
+

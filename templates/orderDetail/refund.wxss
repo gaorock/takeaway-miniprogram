@@ -1,0 +1,25 @@
+.refund-container {
+  display: flex;
+}
+
+.refund-container .status-text {
+  flex: 1;
+  font-size: 30rpx;
+  padding: 10rpx 0;
+}
+
+.refund-container .contact-shop {
+  display: flex;
+  align-items: center;
+}
+
+.refund-container .contact-shop image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.refund-container .contact-shop text {
+  color: #000;
+  font-size: 26rpx;
+  padding-left: 5rpx;
+}

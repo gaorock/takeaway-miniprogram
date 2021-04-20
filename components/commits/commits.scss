@@ -1,0 +1,97 @@
+.commints-container {
+  width: 100%;
+  height: calc(100vh - 120rpx);
+}
+
+.commits-wrapper {
+  padding: 20rpx 30rpx 30rpx 30rpx;
+
+  .commits-title {
+    display: flex;
+    padding: 10rpx 0 20rpx 0;
+
+    .avatar {
+      width: 70rpx;
+      height: 70rpx;
+      border-radius: 50%;
+    }
+
+    .title-right {
+      display: flex;
+      flex: 1;
+
+      .title-text {
+        padding: 0 10rpx;
+        flex: 1;
+
+        .title-name {
+          font-size: 28rpx;
+        }
+        .title-date {
+          color: #999;
+        }
+
+      }
+
+      .title-star {
+        display: flex;
+        align-items: center;
+
+        .text {
+          color: #333;
+        }
+        .stars {
+          display: flex;
+          align-items: cneter;
+          padding-left: 6rpx;
+          .star {
+            width: 26rpx;
+            height: 26rpx;
+          }
+        }
+
+      }
+
+
+
+
+    }
+  }
+
+
+
+  .commits-content {
+    font-size: 28rpx;
+
+    .commits-text {
+      padding: 10rpx 0 20rpx 0;
+    }
+
+    .images {
+      padding: 20rpx 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 10rpx;
+
+      .image {
+        border-radius: 15rpx;
+      }
+    }
+  }
+
+  .reply {
+    padding: 20rpx;
+    background-color: #f2f2f2;
+    border-radius: 15rpx;
+    font-size: 26rpx;
+    color: #999;
+
+    text {
+      color: #fe4a4b;
+    }
+  }
+}
+
+.placeholder {
+  height: 130rpx;
+}

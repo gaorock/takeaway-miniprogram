@@ -1,0 +1,135 @@
+.coupon-popup {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 10000;
+}
+
+.coupon-popup .content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.coupon-popup .wrapper {
+  position: relative;
+}
+
+.coupon-popup .wrapper .placeholder {
+  position: relative;
+  width: 80vw;
+  height: 250rpx;
+  overflow: hidden;
+}
+
+.coupon-popup .wrapper .placeholder .top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80vw;
+  overflow: hidden;
+}
+
+.coupon-popup .wrapper .main {
+  position: relative;
+  width: 80vw;
+  padding: 40rpx 0;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+
+.coupon-popup .wrapper .main .text {
+  color: #f09c2a;
+  padding-bottom: 10rpx;
+  text-align: center;
+}
+
+.coupon-popup .wrapper .coupon {
+  display: flex;
+  margin: 20rpx auto;
+  width: 80%;
+  height: 120rpx;
+  overflow: hidden;
+  background-image: linear-gradient(to right, #feba68, #fe7d4e);
+  border-radius: 10rpx;
+}
+
+.coupon-popup .wrapper .coupon .left {
+  position: relative;
+  flex: 2;
+  background-image: linear-gradient(to right, #ffdbdb 50%, transparent 50%), linear-gradient(to right, #ffdbdb 50%, transparent 50%), linear-gradient(to bottom, #ffdbdb 50%, transparent 50%), linear-gradient(to bottom, #ffdbdb 50%, transparent 50%);
+  background-position: left top, left bottom, left top, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat-y;
+  background-size: 0, 0, 0, 1px 10px;
+  line-height: 110rpx;
+  text-align: center;
+  font-family: 'DIN';
+  color: #fff;
+  font-size: 30rpx;
+}
+
+.coupon-popup .wrapper .coupon .left text {
+  font-size: 70rpx;
+  position: relative;
+}
+
+.coupon-popup .wrapper .coupon .left:before, .coupon-popup .wrapper .coupon .left:after {
+  content: '';
+  position: absolute;
+  width: 22rpx;
+  height: 22rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  right: -10rpx;
+}
+
+.coupon-popup .wrapper .coupon .left:before {
+  top: -10rpx;
+}
+
+.coupon-popup .wrapper .coupon .left:after {
+  bottom: -10rpx;
+}
+
+.coupon-popup .wrapper .coupon .right {
+  flex: 3;
+  font-size: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30rpx;
+  color: #fff;
+}
+
+.coupon-popup .wrapper .coupon .right view {
+  padding: 4rpx 0;
+}
+
+.coupon-popup .wrapper .coupon .right view:first-child {
+  font-size: 24rpx;
+}
+
+.coupon-popup .close {
+  position: relative;
+  text-align: center;
+  padding: 30rpx 0;
+}
+
+.coupon-popup .close image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.coupon-popup .cover {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}

@@ -1,0 +1,39 @@
+<!--components/commits/commits.wxml-->
+<scroll-view class="commints-container" scroll-y="{{true}}"
+bindscrolltolower="loadmore">
+
+
+  <view wx:for="{{commits}}" wx:key="index" 
+  class="commits-wrapper" wx:for-item="commit">
+    <view class="commits-title">
+      <image class="avatar" src="{{commit.member.avatar}}" mode="widthFix" />
+      <view class="title-right">
+        <view class="title-text">
+          <view class="title-name">{{commit.member.user_nickname}}</view>
+          <view class="title-date">{{commit.create_time}}</view>
+        </view>
+        <view class="title-star">
+          <text class="text">评价</text>
+          <view class="stars">
+            <image wx:for="{{[1,2,3,4,5]}}" wx:key="index"
+            src="/assets/icons/grade-{{item <= commit.star?'red':'dark'}}.svg" 
+            mode="widthFix" class="star"/>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="commits-content" id="commits-content">
+      <view class="commits-text">{{commit.content}}</view>
+      <view class="images" wx:if="{{commit.imgs}}">
+          <image wx:for="{{commit.imgs}}"
+          style="width: {{width}}rpx;height:{{width}}rpx;"
+          wx:key="index" wx:for-item="url"
+          class="image" src="{{url}}" mode="aspectFill" />
+      </view>
+    </view>
+    <view class="reply" wx:if="{{commit.reply_content}}">
+      <view><text>店家回复：</text>{{commit.reply_content}}</view>
+    </view>
+  </view>
+  <view class="placeholder"></view>
+</scroll-view>

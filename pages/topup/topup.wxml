@@ -1,0 +1,29 @@
+<!--pages/topup/topup.wxml-->
+<view class="balance-display">
+  <view class="amount currency">￥<text>{{balance}}</text></view>
+  <view class="text">当前余额</view>
+</view>
+<view class="topup-option">
+  <view class="title">请选择充值金额</view>
+  <view class="topup-block">
+    <view class="option-item{{item.id === optionID?' active':''}}" 
+    wx:for="{{topupOption}}"
+    wx:key="id" bind:tap="onOptionChange" 
+    data-id="{{item.id}}">
+      <view class="amount"><text>{{item.recharge_price}}</text>元</view>
+      <view class="promote">赠送{{item.give_price}}元</view>
+    </view>
+  </view>
+
+</view>
+<view class="topup-custom">
+  <text>自定充值金额</text>
+  <input class="inputbox" placeholder="请输入充值金额" 
+  type="digit" placeholder-style="color: #ccc"
+  bind:input="onInputChange" value="{{customTopup}}"/>
+</view>
+
+
+<view class="topup-submit">
+  <view bind:tap="onSubmit">充值</view>
+</view>

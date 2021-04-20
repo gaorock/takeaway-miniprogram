@@ -1,0 +1,280 @@
+.top-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.top-wrapper text {
+  flex: 1;
+  color: #fff;
+  font-size: 46rpx;
+  font-weight: bold;
+}
+
+.top-wrapper image {
+  position: relative;
+  top: 6rpx;
+  right: 4rpx;
+  height: 140rpx;
+  width: 220rpx;
+}
+
+.status-container {
+  text-align: center;
+  padding: 20rpx;
+}
+
+.status-container .title-text {
+  font-size: 28rpx;
+  padding: 20rpx 0;
+}
+
+.status-container .utils-done {
+  display: flex;
+  padding: 20rpx 0;
+}
+
+.status-container .utils-done > view {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-container .utils-done > view.center {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.status-container .utils-done > view image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.status-container .utils-done > view text {
+  font-size: 26rpx;
+  padding-left: 5rpx;
+}
+
+.refund-container {
+  display: flex;
+}
+
+.refund-container .status-text {
+  flex: 1;
+  font-size: 30rpx;
+  padding: 10rpx 0;
+}
+
+.refund-container .contact-shop {
+  display: flex;
+  align-items: center;
+}
+
+.refund-container .contact-shop image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.refund-container .contact-shop text {
+  color: #000;
+  font-size: 26rpx;
+  padding-left: 5rpx;
+}
+
+.seperator {
+  border-right: 1px solid #eee;
+}
+
+.linear-background {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 0;
+}
+
+.linear-background .block {
+  height: 5vh;
+  background-color: #fe4a4b;
+}
+
+.linear-background .linear {
+  height: 20vh;
+  background: linear-gradient(to bottom, #fe4a4b, #f2f2f2);
+}
+
+.linear-background .fill {
+  height: 75vh;
+  background-color: #f2f2f2;
+}
+
+.order-detail-container {
+  position: relative;
+  z-index: 1;
+  padding: 30rpx;
+}
+
+.order-detail-container .sec {
+  background-color: #fff;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  border-radius: 20rpx;
+}
+
+.order-detail-container .sec .title {
+  font-size: 28rpx;
+  padding: 10rpx 0;
+}
+
+.order-detail-container .orderlist .price {
+  font-weight: bold;
+}
+
+.order-detail-container .orderlist .order-detail-title {
+  font-size: 28rpx;
+}
+
+.order-detail-container .orderlist .order-item {
+  display: flex;
+  padding: 20rpx 0;
+}
+
+.order-detail-container .orderlist .order-item > image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 10rpx;
+}
+
+.order-detail-container .orderlist .order-item .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10rpx;
+}
+
+.order-detail-container .orderlist .order-item .title-wrapper {
+  display: flex;
+  font-size: 28rpx;
+}
+
+.order-detail-container .orderlist .order-item .title-wrapper .title {
+  flex: 1;
+}
+
+.order-detail-container .orderlist .order-item .title-wrapper .price {
+  font-size: 22rpx;
+}
+
+.order-detail-container .orderlist .order-item .title-wrapper .price text {
+  font-size: 28rpx;
+  padding-left: 4rpx;
+}
+
+.order-detail-container .orderlist .order-item .tags {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.order-detail-container .orderlist .order-item .amount {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.order-detail-container .orderlist .title-item {
+  display: flex;
+  font-size: 28rpx;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.order-detail-container .orderlist .title-item .desc {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.order-detail-container .orderlist .title-item .desc .icon {
+  width: 36rpx;
+  height: 30rpx;
+}
+
+.order-detail-container .orderlist .title-item .desc .juan {
+  padding-left: 8rpx;
+}
+
+.order-detail-container .orderlist .title-item .desc .deliver {
+  font-size: 24rpx;
+  color: #fe4a4b;
+}
+
+.order-detail-container .orderlist .title-item .price {
+  display: flex;
+  align-items: center;
+  font-size: 22rpx;
+}
+
+.order-detail-container .orderlist .title-item .price text {
+  font-size: 28rpx;
+  padding-left: 4rpx;
+}
+
+.order-detail-container .orderlist .title-item .sum {
+  align-items: flex-end;
+}
+
+.order-detail-container .orderlist .title-item .sum .sum-text {
+  font-weight: normal;
+  padding: 0 10rpx;
+}
+
+.order-detail-container .orderlist .title-item .sum .red {
+  display: flex;
+  align-items: flex-end;
+  font-size: 40rpx;
+  color: #fe4a4b;
+  line-height: 36rpx;
+}
+
+.order-detail-container .orderlist .title-item .sum .red .sign {
+  font-weight: normal;
+  font-size: 28rpx;
+  padding: 0 5rpx;
+}
+
+.order-detail-container .address-wrapper {
+  padding: 10rpx 0 20rpx 0;
+}
+
+.order-detail-container .address {
+  font-weight: bold;
+  padding: 10rpx 0;
+}
+
+.order-detail-container .contact {
+  color: #999;
+  font-size: 26rpx;
+}
+
+.order-detail-container .detail-item {
+  display: flex;
+  margin: 30rpx 0;
+}
+
+.order-detail-container .detail-item .detail-title {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.order-detail-container .detail-item .content {
+  font-size: 28rpx;
+  flex: 1;
+  text-align: right;
+}
+
+.order-detail-container .detail-item.memo .content {
+  padding-left: 150rpx;
+  font-size: 26rpx;
+}

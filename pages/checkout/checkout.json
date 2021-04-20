@@ -1,0 +1,10 @@
+{
+  "navigationBarBackgroundColor": "#fe4a4b",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "提交订单",
+  "backgroundColor": "#fe4a4b",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "Setting": "../../components/openSetting/openSetting"
+  }
+}

@@ -1,0 +1,46 @@
+<!--pages/balance/balance.wxml-->
+<view class="linear-background">
+  <view class="block"></view>
+  <view class="linear"></view>
+  <view class="fill"></view>
+</view>
+
+<view wx:if="{{login}}" class="balance-wrapper">
+  <view class="personal-sec personal-money-wrapper">  
+    <view class="money">
+      <view class="amount">{{balance}}</view>
+      <view class="text">我的余额（元）</view>
+    </view>
+    <view class="money">
+      <view class="amount">68.40</view>
+      <view class="text">消费金额（元）</view>
+    </view>
+    <view class="topup" bind:tap="topup">充值</view>
+  </view>
+
+  <view class="balance-detail">
+    <view class="balance-detail-title">
+      <text>资金明细</text>
+    </view>
+
+    <view class="balance-wrapper">
+      <view class="balance-item" wx:if="{{logs.length > 0}}"
+      wx:for="{{logs}}"
+      wx:key="index">
+        <view class="left">
+          <view class="balance-type">充值</view>
+          <view class="balance-date">2021-03-09 16:35</view>
+        </view>
+        <view class="right">-28.40</view>
+      </view>
+
+      <view class="noitem" wx:if="{{logs.length === 0}}">没有记录</view>
+    </view>
+    
+  </view>
+
+</view>
+
+<view wx:else class="login">
+  <view>请登录</view>
+</view>

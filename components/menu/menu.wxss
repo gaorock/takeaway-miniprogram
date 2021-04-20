@@ -1,0 +1,170 @@
+/* components/menu/menu.wxss */
+
+/* placeholder is for homepage bottom space when Cart is shown */
+.placeholder {
+  height: 160rpx;
+  width: 100%;
+}
+
+/* Tab left - menu */
+
+.menu-wrapper {
+  display: flex;
+  height: calc(100vh - 120rpx);
+}
+
+
+/* Menu left */
+.menu-left-wrapper {
+  background-color: #f8f7fa;
+  flex: 3;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  text-align: center;
+}
+
+.menu-left-item {
+  padding: 34rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.menu-left-item.active {
+  position: relative;
+  background-color: #fff;
+  color: #000;
+}
+
+.menu-left-item.active:before {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 40rpx;
+  width: 6rpx;
+  background-color: #fe4a4b;
+}
+
+/* Menu Right */
+
+.menu-right-wrapper {
+  position: relative;
+  flex: 9;
+}
+
+/* .right-cate-bar {
+  position: absolute;
+  width: 200rpx;
+  height: 20rpx;
+  background-color: #000;
+} */
+
+.menu-right-item {
+  /* background-color: #aaa; */
+  /* margin: 10rpx 0; */
+  padding: 20rpx;
+  display: flex;
+}
+
+.menu-item-image {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 20rpx;
+}
+
+.menu-item-info {
+  padding-left: 20rpx;
+  flex: 1;
+  /* background-color: turquoise; */
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item-info .item-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  padding: 4rpx 0;
+}
+
+.menu-item-info .item-cates {
+  padding: 0 2rpx;
+  background-color: #eee;
+  border-radius: 4rpx;
+  font-size: 22rpx;
+  margin-right: 6rpx;
+}
+
+
+/* --------------------- item lower part -------------------- */
+.item-lower-wrapper {
+  /* background-color: thistle; */
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+
+}
+
+.item-lower-wrapper .item-repe {
+  flex: 1;
+  /* background-color: red; */
+}
+
+.item-lower-wrapper .item-repe .item-sale { 
+  color: #999;
+}
+.item-lower-wrapper .item-repe .item-money-sign,
+.item-lower-wrapper .item-repe .item-money-yan,
+.item-lower-wrapper .item-repe .item-money-fen {
+  font-family: "DIN";
+}
+
+.item-lower-wrapper .item-repe .item-money-sign {
+  font-size: 24rpx;
+  padding-right: 8rpx;
+}
+.item-lower-wrapper .item-repe .item-price-yan {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.item-lower-wrapper .item-repe .item-price-fen {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+.item-lower-wrapper .item-repe .item-unit {
+  color: #999;
+}
+
+
+
+.item-lower-wrapper .item-button {
+  background-color: #fff;
+
+}
+
+.item-lower-wrapper .item-button .item-button-multi {
+  background-color: #fe4a4b;
+  color: #fff;
+  padding: 4rpx 14rpx;
+  border-radius: 20rpx;
+  /* font-size: 24rpx; */
+}
+
+.item-lower-wrapper .item-button .item-button-amount {
+  display: flex;
+  align-items: flex-end;
+}
+
+.item-button-amount-icon {
+  width: 50rpx;
+  /* height: 50rpx; */
+}
+
+.item-button-amount-text {
+  height: 50rpx;
+  line-height: 50rpx;
+  width: 60rpx;
+  text-align: center;
+  font-size: 30rpx;
+}

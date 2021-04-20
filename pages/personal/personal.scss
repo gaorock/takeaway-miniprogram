@@ -1,0 +1,124 @@
+page {
+  background-color: #f2f2f2;
+  padding: 40rpx;
+}
+
+.personal-header-wrapper {
+  padding: 20rpx 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 50rpx;
+
+
+  .userinfo-avatar {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #ccc;
+  }
+  .userinfo-nickname {
+    padding-left: 20rpx;
+    font-size: 40rpx;
+    font-weight: bold;
+  }
+}
+
+.personal-sec {
+  background-color: #fff;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.personal-order-wrapper {
+  display: flex;
+  padding: 40rpx 0;
+
+  &>view {
+    flex: 1;
+    text-align: center;
+
+    &:nth-child(2) {
+      padding: 0 15rpx 0 30rpx;
+    }
+
+    &:nth-child(3) {
+      padding: 0 30rpx 0 15rpx;
+    }
+
+    .text {
+      font-size: 24rpx;
+      margin-top: 10rpx;
+    }
+  }
+
+  image {
+    width: 50rpx;
+    height: 50rpx;
+  }
+}
+
+.personal-money-wrapper {
+  display: flex;
+  padding: 40rpx;
+  align-items: center;
+
+ .money {
+    flex: 1;
+
+    .amount {
+      font-family: 'DIN';
+      font-size: 46rpx;
+      color: #fe4a4b;
+    }
+
+    .text {
+      font-size: 24rpx;
+      color: #999;
+    }
+  }
+
+  .detail {
+    font-size: 24rpx;
+    background-color: #000;
+    color: #fff;
+    padding: 8rpx 30rpx;
+    border-radius: 30rpx;
+    
+  }
+
+}
+
+.personal-manage-wrapper {
+  padding-top: 30rpx;
+
+  .manage-line {
+    display: flex;
+    align-items: center;
+    padding: 30rpx 0;
+
+    .manage-text {
+      display: flex;
+      align-items: center;
+      flex: 1;
+
+      text {
+        padding-left: 10rpx;
+        font-size: 30rpx;
+      }
+    }
+
+    .before {
+      width: 30rpx;
+      height: 30rpx;
+      margin: 0 10rpx;
+    }
+
+    .arrow {
+      width: 40rpx;
+      height: 40rpx;
+    }
+
+  }
+}

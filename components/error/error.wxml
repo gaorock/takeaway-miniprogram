@@ -1,0 +1,7 @@
+<!--components/error/error.wxml-->
+<view class="error-message{{open?'':' hide'}}" bind:transitionend="onTransitionEnd">
+  <view class="message">
+    {{message}}
+  </view>
+  <view class="cover" bind:tap="close"></view>
+</view>

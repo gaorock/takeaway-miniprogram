@@ -1,0 +1,28 @@
+<!--pages/pay/pay.wxml-->
+<view class="order-pay-container">
+  <view class="pay-summary">
+    <view class="total currency">￥<text>{{money}}</text></view>
+    <view class="number">订单编号2021030810010156</view>
+  </view>
+  <view class="pay-wrapper">
+    <view class="pay-title-text">支付方式</view>
+    <view class="pay-method{{method === 0?' active':''}}" bind:tap="changeMethod" data-method="{{0}}">
+      <image class="icon" src="/assets/icons/weixin-pay.png" mode="widthFix" />
+      <text class="weixin-text">微信支付</text>
+      <image class="tick" src="/assets/icons/tick.png" mode="widthFix" />
+    </view>
+    <view class="pay-method{{method === 1?' active':''}}" bind:tap="changeMethod" data-method="{{1}}">
+      <image class="icon" src="/assets/icons/yue-pay.png" mode="widthFix" />
+      <view class="yue-text">
+        <text>余额支付</text>
+        <text class="num currency">￥248.40</text>
+      </view>
+      <image class="tick" src="/assets/icons/tick.png" mode="widthFix" />
+    </view>
+  </view>
+  <view class="button-group">
+    <view class="button active" bind:tap="pay" open-type="getUserInfo">支付</view>
+    <view class="button" bind:tap="cancel">取消支付</view>
+  </view>
+</view>
+

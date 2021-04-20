@@ -1,0 +1,6 @@
+<!--components/amountButton/amountButton.wxml-->
+<view class="item-button-amount">
+  <image src="/assets/icons/remove_circle-black-24dp.svg" mode="widthFix" class="item-button-amount-icon" bind:tap="sub"/>
+  <text class="item-button-amount-text">{{amount}}</text>
+  <image src="/assets/icons/add_circle-black-24dp.svg" mode="widthFix" class="item-button-amount-icon" bind:tap="add"/>
+</view>

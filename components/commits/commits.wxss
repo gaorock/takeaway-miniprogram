@@ -1,0 +1,92 @@
+.commints-container {
+  width: 100%;
+  height: calc(100vh - 120rpx);
+}
+
+.commits-wrapper {
+  padding: 20rpx 30rpx 30rpx 30rpx;
+}
+
+.commits-wrapper .commits-title {
+  display: flex;
+  padding: 10rpx 0 20rpx 0;
+}
+
+.commits-wrapper .commits-title .avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+
+.commits-wrapper .commits-title .title-right {
+  display: flex;
+  flex: 1;
+}
+
+.commits-wrapper .commits-title .title-right .title-text {
+  padding: 0 10rpx;
+  flex: 1;
+}
+
+.commits-wrapper .commits-title .title-right .title-text .title-name {
+  font-size: 28rpx;
+}
+
+.commits-wrapper .commits-title .title-right .title-text .title-date {
+  color: #999;
+}
+
+.commits-wrapper .commits-title .title-right .title-star {
+  display: flex;
+  align-items: center;
+}
+
+.commits-wrapper .commits-title .title-right .title-star .text {
+  color: #333;
+}
+
+.commits-wrapper .commits-title .title-right .title-star .stars {
+  display: flex;
+  align-items: cneter;
+  padding-left: 6rpx;
+}
+
+.commits-wrapper .commits-title .title-right .title-star .stars .star {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.commits-wrapper .commits-content {
+  font-size: 28rpx;
+}
+
+.commits-wrapper .commits-content .commits-text {
+  padding: 10rpx 0 20rpx 0;
+}
+
+.commits-wrapper .commits-content .images {
+  padding: 20rpx 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 10rpx;
+}
+
+.commits-wrapper .commits-content .images .image {
+  border-radius: 15rpx;
+}
+
+.commits-wrapper .reply {
+  padding: 20rpx;
+  background-color: #f2f2f2;
+  border-radius: 15rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.commits-wrapper .reply text {
+  color: #fe4a4b;
+}
+
+.placeholder {
+  height: 130rpx;
+}

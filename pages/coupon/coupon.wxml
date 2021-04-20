@@ -1,0 +1,35 @@
+
+<!--pages/coupon/coupon.wxml-->
+<view class="coupon-cate-tap">
+  <view wx:for="{{['可用', '已使用', '已过期']}}" wx:key="index"
+  class="{{index === tabIndex?'active':''}}"
+  bind:tap="onTapChange" data-id="{{index}}">{{item}}</view>
+</view>
+
+<scroll-view class="coupon-list-wrapper" scroll-y="{{true}}">
+  <block wx:if="{{login}}">
+    <view class="coupon-box{{coupon.status !== 0?' invalid':''}}" wx:for="{{list}}" wx:key="id" wx:for-item="coupon">
+
+      <view class="coupon-left">
+        <view class="money">￥<text>{{coupon.amount}}</text>.0</view>
+        <view class="limit">满{{coupon.limit}}可用</view>
+      </view>
+      <view class="coupon-right">
+        <view class="coupon-type">
+          <view class="coupon-type-text">满减券</view>
+          <view class="expires">有效期至{{coupon.date}}</view>
+        </view>
+        <view wx:if="{{coupon.status === 0}}" class="size tobeuse">去使用</view>
+        <view wx:elif="{{coupon.status === 1}}" class="size">已失效</view>
+        <view wx:elif="{{coupon.status === 2}}" class="size">已使用</view>
+      </view>
+
+    </view>
+  </block>
+  <view wx:else class="login">
+    <view bind:tap="login">登录</view>
+  </view>
+ 
+</scroll-view>
+
+

@@ -1,0 +1,43 @@
+<!--pages/evaluate/evaluate.wxml-->
+<view class="title">商品信息</view>
+<view class="sec1">
+  <view class="products">
+    <view class="images">
+      <view wx:for="{{[1,2,3]}}" wx:key="index" class="image">
+        <image src="/assets/images/drink1.png" mode="aspectFill" />
+        <text>aklsdjlkasd</text>
+      </view>
+    </view>
+    <view class="info"> 
+      <view class="currency"><text>¥</text>26.00</view>
+      <view class="count">共2件</view>
+    </view>
+  </view>
+</view>
+
+<view class="sec2">
+  <image wx:for="{{star}}"
+    wx:key="index" bind:tap="clickStar" data-idx="{{index}}"
+    src="/assets/icons/star-{{item === 0?'gray':'red'}}.png" 
+    mode="widthFix" />
+</view>
+
+<view class="text">请对店铺菜品进行评分</view>
+<view class="commit">
+  <textarea value="{{commit}}" maxlength="300" placeholder-style="color: #ccc"
+  placeholder="写下您对菜品和商家的评价吧～" bind:input="commitChange"></textarea>
+  <view class="count">{{commit.length}}/300</view>
+</view>
+
+<view class="title">晒图</view>
+<view class="photos">
+  <image class="photo" mode="aspectFit" wx:for="{{photos}}" bind:tap="deletePhoto"
+  wx:for-item="photo" src="{{photo}}" wx:key="index" data-idx="{{index}}" />
+  <view class="photo picker" bind:tap="chooseImage" wx:if="{{photos.length < 3}}">
+    <image src="/assets/icons/addimage.png" mode="aspectFit" />
+  </view>
+</view>
+
+<view class="button" bind:tap="onSubmit">评价</view>
+
+

@@ -1,0 +1,25 @@
+<!--components/coupon/coupon.wxml-->
+
+
+<!-- lower - Coupons -->
+<view class="middle-part-2"> 
+  <view class="coupon-title-wrappper">
+    <image class="coupon-icon" src="/assets/icons/coupon-icon.png" mode="aspectFit"></image>
+    <text class="coupon-title">领取优惠券</text>
+  </view>
+  <!-- Coupon List -->
+  <scroll-view class="coupon-list" scroll-x="true">
+    <view class="coupon-item" wx:for="{{items}}" wx:key="index" wx:for-item="item">
+      <image src="/assets/images/coupon.svg" mode="widthFix" class="coupon-image"/>
+      <view class="coupon-item-text-wrapper">
+        <view class="coupon-item-text-price">
+          <text>¥<text class="item-text-price-b">{{item.money}}</text>.0</text>
+        </view>
+        <view class="coupon-item-text-desc">
+          <view>满{{item.limit}}可用</view>
+          <view>点击领取</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
