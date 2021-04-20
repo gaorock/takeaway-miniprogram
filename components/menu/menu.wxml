@@ -37,6 +37,8 @@
               bind:tap="openMultiSelect"
               data-id="{{prod.id}}">多规格</view>
 
+              <view wx:elif="{{prod.stock < 1}}" class="item-button-out">售罄</view>
+
               <Amount wx:else 
               amount="{{cartItem[prod.id]['normal']}}"
               bind:amountChange="onAmountChange" 

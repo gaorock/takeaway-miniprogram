@@ -151,6 +151,13 @@
   /* font-size: 24rpx; */
 }
 
+.item-lower-wrapper .item-button .item-button-out {
+  color: #fff;
+  padding: 4rpx 14rpx;
+  border-radius: 20rpx;
+  background-color: #aaa;
+}
+
 .item-lower-wrapper .item-button .item-button-amount {
   display: flex;
   align-items: flex-end;

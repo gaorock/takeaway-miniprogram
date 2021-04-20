@@ -8,9 +8,7 @@ Component({
       type: Boolean,
       value: false
     },
-    cartItem: {
-      type: Object
-    },
+    cartItem: Object,
     catelist: Array,
     products: Array
   },
@@ -24,7 +22,7 @@ Component({
 
   lifetimes: {
     ready: function () {
-      console.log('menu ready.', {products: this.data})
+      console.log('menu ready.', {products: this.data.products})
 
       // initial left menu index with first id.
       this.setData({menuID: this.data.catelist[0].id})
