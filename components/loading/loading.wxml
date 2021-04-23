@@ -9,7 +9,15 @@
   </view>
 </view> -->
 
-<div class="loader">
+
+
+<view wx:if="{{type === 1}}" class="loader-2-wrapper">
+
+  <image src="/assets/icons/autorenew_black_24dp.svg" mode="widthFix" class="loading-icon" />
+
+</view>
+
+<view wx:else class="loader">
   <span class="loader-block"></span>
   <span class="loader-block"></span>
   <span class="loader-block"></span>
@@ -19,4 +27,4 @@
   <span class="loader-block"></span>
   <span class="loader-block"></span>
   <span class="loader-block"></span>
-</div>
+</view>

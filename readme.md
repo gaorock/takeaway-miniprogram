@@ -27,6 +27,8 @@
 1. [ ] order miss status - after evaluate but finished
 2. [ ] '/user/Profile/userInfo' - return 'total_consume_price': 693.6499999999999
 3. [ ] need to test settlement without fixed delivery areas.
+4. [ ] checkout page, if server set 'delivery_type' - 1配送2自取3随意, then api should return 'delivery_type', now is only 3 for testing.
+5. [ ] address list need to add 'click to select' function for checkout page when delivery is free address.
 
 ### COMPONENETS
 

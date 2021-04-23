@@ -72,7 +72,7 @@
 }
 
 .sec-man-jian text{
-  color: orangered;
+  color: #fe4a4b;
   padding: 2rpx 10rpx;
   margin-right: 10rpx;
 }

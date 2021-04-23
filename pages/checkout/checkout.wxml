@@ -121,7 +121,7 @@
     </view>
     <view class="title-item">
       <view class="desc">合计</view>
-      <view class="price red">¥<text>{{checkout.price}}</text></view>
+      <view class="price red">¥<text>{{checkout.priceStr}}</text></view>
     </view>
 
   </view>
@@ -139,7 +139,7 @@
   <view class="buttons">
     <view class="summary">
       <view>
-        合计￥<text class="yuan">{{checkout.price[0]}}</text>.{{checkout.price[1]}}<text class="fee">（配送费￥{{deliver_fee}}）</text>
+        合计￥<text class="yuan">{{checkout.price[0]}}</text>.{{checkout.price[1]}}<text class="fee">（配送费￥{{checkout.deliver_fee}}）</text>
       </view>
       <view class="discount">已优惠￥{{checkout.youhui}}</view>
     </view>

@@ -4,5 +4,7 @@
   "navigationBarTitleText": "个人中心",
   "backgroundColor": "#fefefe",
   "backgroundTextStyle": "dark",
-  "usingComponents": {}
+  "usingComponents": {
+    "Loading": "../../components/loading/loading"
+  }
 }

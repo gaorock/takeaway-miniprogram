@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "写评价",
   "usingComponents": {
-    "Error": "../../components/error/error"
+    "Error": "../../components/error/error",
+    "Loading": "../../components/loading/loading"
   }
 }

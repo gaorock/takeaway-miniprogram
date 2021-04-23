@@ -13,6 +13,7 @@ Page({
     star: [1,0,0,0,0],
     commit: '',
     photos: [],
+
     uploading: false,
     error: null,
   },
@@ -85,14 +86,15 @@ Page({
       success: async function (res) {
         const photos = res.tempFiles.map(i => i.tempFilePath);
         const upload = [];
-        let uploadUrl = [];
+
+        that.setData({uploading: true})
 
         for(const img of photos) {
           // multi
           upload.push(await that.upload(img));
         }
 
-        that.setData({uploading: true})
+        
 
         Promise.all(upload).then(passRes => {
 
@@ -138,9 +140,8 @@ Page({
     })
 
     if (res.code === 1) {
-      wx.navigateBack({
-        delta: 1
-      })
+      this._success = true;
+      this.setData({error: '评论成功！'})
     } else {
       this.setData({error: '操作失败，请稍后重试！'})
     }
@@ -152,6 +153,11 @@ Page({
 
   onErrorDown () {
     this.setData({error: null})
+    if (this._success) {
+      wx.navigateBack({
+        delta: 1
+      })
+    }
   },
 
 

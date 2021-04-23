@@ -1,70 +1,75 @@
 <!--pages/personal/personal.wxml-->
-<view class="personal-header-wrapper">
-  <view class="userinfo-avatar" bind:tap="getUserProfile">
-    <open-data type="userAvatarUrl" wx:if="{{login}}"></open-data>
-  </view>
-  <view class="userinfo-nickname" bind:tap="getUserProfile">
-    <open-data type="userNickName" wx:if="{{login}}"></open-data>
-    <text wx:else>登陆</text>
-  </view>
-</view>
-<view class="personal-sec personal-order-wrapper">
-  <!-- <view>
-    <navigator url="/pages/coupon/coupon">
-      <image src="/assets/icons/coupon.png" mode="aspectFit" />
-      <view class="text">优惠券</view>
-    </navigator>
-  </view> -->
-  
-  <view>
-    <navigator url="/pages/orderList/order?page=0">
-      <image src="/assets/icons/order.png" mode="aspectFit" />
-      <view class="text">订单</view>
-    </navigator>
-  </view>
-  <view>
-    <navigator url="/pages/orderList/order?page=1">
-      <image src="/assets/icons/evaluate.png" mode="aspectFit" />
-      <view class="text">待评价</view>
-    </navigator>
-  </view>
-  <view>
-    <navigator url="/pages/orderList/order?page=2">
-      <image src="/assets/icons/refund.png" mode="aspectFit" />
-      <view class="text">退款</view>
-    </navigator>
-  </view>
-</view>
-<view class="personal-sec personal-money-wrapper">  
-  <view class="money">
-    <view class="amount">{{balance}}</view>
-    <view class="text">我的余额（元）</view>
-  </view>
-  <view class="money">
-    <view class="amount">{{consume}}</view>
-    <view class="text">消费金额（元）</view>
-  </view>
-  <navigator url="/pages/balance/balance"><view class="detail">详情</view></navigator>
-</view>
-<view class="personal-manage-wrapper">
-  <navigator url="/pages/address/address">
-    <view class="manage-line">
-      <view class="manage-text">
-        <image class="before" mode="widthFix" src="/assets/icons/address.png" />
-        <text>收货地址管理</text>
-      </view>
-      <image class="arrow" mode="widthFix" src="/assets/icons/navigate_next-black-18dp.svg" />
+<block wx:if="{{!loading}}">
+  <view class="personal-header-wrapper">
+    <view class="userinfo-avatar" bind:tap="getUserProfile">
+      <open-data type="userAvatarUrl" wx:if="{{login}}"></open-data>
     </view>
-  </navigator>
-  <navigator url="/pages/protocol/protocol">
-    <view class="manage-line">    
-      <view class="manage-text">
-        <image class="before" mode="widthFix" src="/assets/icons/protocal.png" />
-        <text>到店自取用户协议</text>
-      </view>
-      <image class="arrow" mode="widthFix" src="/assets/icons/navigate_next-black-18dp.svg" />
+    <view class="userinfo-nickname" bind:tap="getUserProfile">
+      <open-data type="userNickName" wx:if="{{login}}"></open-data>
+      <text wx:else>登陆</text>
     </view>
-  </navigator>
-  
-</view>
+  </view>
+  <view class="personal-sec personal-order-wrapper">
+    <!-- <view>
+      <navigator url="/pages/coupon/coupon">
+        <image src="/assets/icons/coupon.png" mode="aspectFit" />
+        <view class="text">优惠券</view>
+      </navigator>
+    </view> -->
+    
+    <view>
+      <navigator url="/pages/orderList/order?page=0">
+        <image src="/assets/icons/order.png" mode="aspectFit" />
+        <view class="text">订单</view>
+      </navigator>
+    </view>
+    <view>
+      <navigator url="/pages/orderList/order?page=1">
+        <image src="/assets/icons/evaluate.png" mode="aspectFit" />
+        <view class="text">待评价</view>
+      </navigator>
+    </view>
+    <view>
+      <navigator url="/pages/orderList/order?page=2">
+        <image src="/assets/icons/refund.png" mode="aspectFit" />
+        <view class="text">退款</view>
+      </navigator>
+    </view>
+  </view>
+  <view class="personal-sec personal-money-wrapper">  
+    <view class="money">
+      <view class="amount">{{balance}}</view>
+      <view class="text">我的余额（元）</view>
+    </view>
+    <view class="money">
+      <view class="amount">{{consume}}</view>
+      <view class="text">消费金额（元）</view>
+    </view>
+    <navigator url="/pages/balance/balance"><view class="detail">详情</view></navigator>
+  </view>
+  <view class="personal-manage-wrapper">
+    <navigator url="/pages/address/address">
+      <view class="manage-line">
+        <view class="manage-text">
+          <image class="before" mode="widthFix" src="/assets/icons/address.png" />
+          <text>收货地址管理</text>
+        </view>
+        <image class="arrow" mode="widthFix" src="/assets/icons/navigate_next-black-18dp.svg" />
+      </view>
+    </navigator>
+    <navigator url="/pages/protocol/protocol">
+      <view class="manage-line">    
+        <view class="manage-text">
+          <image class="before" mode="widthFix" src="/assets/icons/protocal.png" />
+          <text>到店自取用户协议</text>
+        </view>
+        <image class="arrow" mode="widthFix" src="/assets/icons/navigate_next-black-18dp.svg" />
+      </view>
+    </navigator>
+    
+  </view>
+</block>
+
+
+<Loading wx:if="{{loading}}"/>
 

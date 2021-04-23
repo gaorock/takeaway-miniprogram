@@ -14,7 +14,8 @@ Page({
     login: false,
     inform: null,
     
-    status: ['待发货', '已发货', '已完成', '退款中', '已退款']
+    status: ['待发货', '已发货', '已完成', '退款中', '已退款'],
+    loading: true
   },
 
   changeTab (e) {
@@ -65,12 +66,15 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onShow: function (options) {
+  onShow: async function (options) {
     console.log('show')
-    const token = wx.getStorageSync('token');
-    this.setData({login: !!token});
+    
     this._currentPage = 1;
-    this._getOrderList(this.data.tabIndex, true);
+    await this._getOrderList(this.data.tabIndex, true);
+
+    const token = wx.getStorageSync('token');
+    this.setData({login: !!token, loading: false});
+    
   },
 
   async _getOrderList (status, reload) {

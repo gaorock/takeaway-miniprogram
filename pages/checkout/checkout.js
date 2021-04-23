@@ -10,51 +10,53 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // renew from localstorage 
-    delivery_type: 3,
-
-    tabIndex: 0,
-    agreeChecked: true,
-    cartList: [],
+    tabIndex: 0,        // 0 delivery | 1 ziqu
+    agreeChecked: true, // user protocol aressment checked
+    cartList: [],     // cart list items
     checkout: {
-      price: 0,
-      total_price: 0,
-      youhui: 0,
-      deliver_fee: 0,
+      priceStr: '',   // price string for display and data sending
+      price: [],      // price array for styled display
+      total_price: 0, // initial total price
+      youhui: 0,      // youhui: money amount
+      deliver_fee: 0, // freight 
     },
     
-    bottomHeight: 0,
+    bottomHeight: 0,  // adapt iPhone safearea
 
     // user contact phone for 1/2
-    contact: '',
-    phone: '',
-    address_id: '',
+    contact: '',  // user name for delivery
+    phone: '',  // user phone for delivery AND ziqu
 
+    // 1. delivery (free address)
+    address_id: '',  // used for delivery type 1 - and not fixed delivery area
+
+    // 1 delivery (fiexed area)
     area: null, // fixed delivery_area []
     picked_index: null, // fixed delivery_area picked index
 
-    // 1 takeaway
-    distance: 0,
-    shopLocation: '',
+    // 2 ziqu/takeaway
+    ziqu_time: null,  // user choosen ziqu time
+    ziqu_time_index: null,  // ziqu_range idx depend on placing order time
+    ziqu_range: [],     // 8:00 - 21:45
+    distance: 0,      // server return distance
+    shopLocation: '', // server return shop address
 
-    // 2 ziqu
-    ziqu_time: null,
-    ziqu_time_index: null,
-    ziqu_range: [],
-
-    showSetting: false,
-    permission: false,
+    showSetting: false, // open weixin setting, to get permission
+    permission: false,  // geoLocation permission
 
     // remark: '' // this._remark
   },
 
-
+  // renew from localstorage 
+  delivery_type: 3,   //1配送2自取3随意
 
   async changeTab (e) {
     // lock user tab behaviour if not 3(any)
-    if (this.data.delivery_type !== 3) return;
+    if (this.delivery_type !== 3) return;
+
     const {idx} = e.currentTarget.dataset;
     if (idx === this.data.tabIndex) return;
+    this.setData({tabIndex: idx})
 
     const that = this;
     // user choose takeaway
@@ -73,7 +75,6 @@ Page({
       console.log(data)
     }
 
-    this.setData({tabIndex: idx})
   },
 
   // on Tab2, if no permission, check to show setting button
@@ -126,14 +127,16 @@ Page({
       })
 
       console.log(settle)
-      const {kilometre, address, price, total_price, youhui} = settle.data.data;
+      const {kilometre, address, price, total_price, youhui, freight} = settle.data.data;
 
       this.setData({
         permission: true,
         checkout: {
-          price,
+          priceStr: price,
+          price: formatPrice(price),
           total_price,
-          youhui
+          youhui,
+          deliver_fee: freight
         },
         distance: kilometre,
         shopLocation: address,
@@ -156,7 +159,6 @@ Page({
     console.log(sys)
     this.setData({bottomHeight: sys.screenHeight - sys.safeArea.bottom})
     
-
     // read Cart list form localstorage
     const cart = wx.getStorageSync('cart');
     this._priceTable = wx.getStorageSync('price');
@@ -251,7 +253,8 @@ Page({
           this.setData({
 
             checkout: {
-              price,  // final price
+              priceStr: price,
+              price: formatPrice(price),  // final price
               total_price,  // before youhui
               youhui,
               time,  // deliver time
@@ -347,7 +350,7 @@ Page({
       remark: this._remark || '',
       freight: checkout?checkout.deliver_fee: 0,
       youhui: checkout?checkout.youhui: 0,
-      price: checkout?checkout.price: 0,
+      price: checkout?checkout.priceStr: 0,
       type,
       goods: this._requestList || []
     }
@@ -396,7 +399,7 @@ Page({
         // order_id
         // wx.setStorageSync('order_id', orderRes.data);
         wx.redirectTo({
-          url: `/pages/pay/pay?order_id=${orderRes.data}&money=${checkout.price}`
+          url: `/pages/pay/pay?order_id=${orderRes.data}&money=${checkout.priceStr}`
         })
 
       } else {
@@ -407,16 +410,6 @@ Page({
       console.warn(e)
     }
 
-    
-
-
-
-    console.log(data)
-
-    
-    // wx.navigateTo({
-    //   url: `../pay/pay?money=${this.data.checkout.price.join('.')}`,
-    // })
   },
 
 

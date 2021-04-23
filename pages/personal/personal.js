@@ -13,6 +13,7 @@ Page({
     login: false,
     balance: '0.00',
     consume: '0.00',
+    loading: true,
   },
   /**
    * 生命周期函数--监听页面加载
@@ -25,7 +26,8 @@ Page({
     if (balance.code === 1) {
       this.setData({
         balance: balance.data.balance,
-        consume: this._formatMoney(balance.data.total_consume_price)
+        consume: this._formatMoney(balance.data.total_consume_price),
+        loading: false
       })
     }
     
