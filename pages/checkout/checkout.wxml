@@ -143,11 +143,11 @@
       </view>
       <view class="discount">已优惠￥{{checkout.youhui}}</view>
     </view>
-    <view class="pay" bind:tap="togopay">去支付</view>
+    <view class="pay{{(tabIndex === 0 || permission)?'': ' notallowd'}}" bind:tap="togopay">去支付</view>
   </view>
   <view class="iphone" style="height: {{bottomHeight}}rpx">
     <view class="summary"></view>
-    <view class="pay"></view>
+    <view class="pay{{(tabIndex === 0 || permission)?'': ' notallowd'}}"></view>
   </view>
 </view>
 

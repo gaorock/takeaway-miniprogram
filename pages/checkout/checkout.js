@@ -48,17 +48,20 @@ Page({
     // remark: '' // this._remark
   },
 
+
+
   async changeTab (e) {
     // lock user tab behaviour if not 3(any)
     if (this.data.delivery_type !== 3) return;
-
-
     const {idx} = e.currentTarget.dataset;
+    if (idx === this.data.tabIndex) return;
+
     const that = this;
     // user choose takeaway
     if (idx === 1) {
       try{
         await this._getUserLocation()
+
       } catch(e) {
         // get permission to use geoLocation
         console.error(e)
@@ -331,7 +334,12 @@ Page({
   },
 
   async togopay () {
-
+    // if user choose 'ziqu' but no geoLocation permission, then not allowed to pay
+    if (this.data.tabIndex === 1 && !this.data.permission) {
+      this.setData({showSetting: true})
+      return console.log('no geo_permission');
+    }
+    
     const type = this.data.tabIndex + 1;
     const {checkout} = this.data;
 
@@ -345,6 +353,7 @@ Page({
     }
 
     if (type === 2) {
+      
       const date = new Date();
       data['ziqu_time'] = this.data.ziqu_time === null?date.getHours() + ':' + date.getMinutes():this.data.ziqu_time;
       if (!isMobilePhone(this._ziquContactPhone.toString(), 'zh-CN')) {
@@ -374,6 +383,8 @@ Page({
         data['address_id'] = this.data.id
       }
     }
+
+
 
     try {
       const orderRes = await fetch(URLs.postAddOrder, {

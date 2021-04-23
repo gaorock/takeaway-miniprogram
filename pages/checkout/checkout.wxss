@@ -190,7 +190,7 @@
 .order-container .order-type-wrapper .tab-content-2 .take-info .left .time-num {
   display: flex;
   align-items: center;
-  font-size: 28rpx;
+  font-size: 26rpx;
   font-weight: bold;
 }
 
@@ -211,7 +211,8 @@
 
 .order-container .order-type-wrapper .tab-content-2 .take-info .right .phone-num {
   display: flex;
-  font-size: 28rpx;
+  align-items: center;
+  font-size: 26rpx;
   font-weight: bold;
 }
 
@@ -438,6 +439,10 @@
   background-color: #fe4a4b;
 }
 
+.order-submit-wrapper .buttons .pay.notallowd {
+  background-color: #666;
+}
+
 .order-submit-wrapper .iphone {
   display: flex;
   height: 40rpx;
@@ -452,4 +457,8 @@
 .order-submit-wrapper .iphone .pay {
   flex: 1;
   background-color: #fe4a4b;
+}
+
+.order-submit-wrapper .iphone .pay.notallowd {
+  background-color: #666;
 }

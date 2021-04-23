@@ -52,24 +52,6 @@ Page({
     }
     
     
-
-    // this.pay();
-
-
-    // wx.chooseAddress({
-    //   success (res) {
-    //     console.log(res.userName)
-    //     console.log(res.postalCode)
-    //     console.log(res.provinceName)
-    //     console.log(res.cityName)
-    //     console.log(res.countyName)
-    //     console.log(res.detailInfo)
-    //     console.log(res.nationalCode)
-    //     console.log(res.telNumber)
-    //   }
-    // })
-    
-    
     
   },
 
@@ -219,7 +201,7 @@ Page({
           resolve({
             title: 'Hi～你和我的距离只差一顿外卖～',
             path: `/page/otherPay/otherPay?new_order_sn=${res.new_order_sn}`,
-            imageUrl: res.data.share_img || 'https://waimai.douxiaoxu.com/upload/share/11.png' || '/assets/images/otherpay.png'
+            imageUrl: res.data.share_img
           })
         }
 
