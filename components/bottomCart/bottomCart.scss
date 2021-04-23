@@ -94,6 +94,10 @@
   color: #fff;
   font-size: 28rpx;
   padding-right: 10rpx;
+
+  &.notenough {
+    background-color: #666;
+  }
 }
 
 /* closed */

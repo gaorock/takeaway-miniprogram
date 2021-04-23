@@ -21,7 +21,7 @@
         {
           "name": "pay",
           "pathName": "pages/pay/pay",
-          "query": "",
+          "query": "order_id=90",
           "scene": null
         },
         {
@@ -76,6 +76,12 @@
           "name": "evaluate",
           "pathName": "pages/evaluate/evaluate",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "otherpay",
+          "pathName": "pages/otherPay/otherPay",
+          "query": "new_order_sn=2021042257101489",
           "scene": null
         }
       ]

@@ -1,5 +1,5 @@
 function formatData (data) {
-  const {cate, shop, mj, delivery_type, is_closed, ps} = data;
+  const {cate, shop, mj, coupon_list, delivery_type, is_closed, ps} = data;
   // is_closed //是否闭店
   // ps 初始配送金额
   // delivery_type 1配送|2自取|3都可以
@@ -26,7 +26,14 @@ function formatData (data) {
     return c
   }).filter(c => c.goods.length !== 0)
 
-  const coupon = mj.map(m => {
+  const coupon = coupon_list.map(m => {
+    const money = m.money.split('.');
+    const limit = m.at_least.split('.');
+
+    return {money: money[0], limit: limit[0]}
+  });
+
+  const manjian = mj.map(m => {
     const money = m.money.split('.');
     const limit = m.at_least.split('.');
 
@@ -44,6 +51,7 @@ function formatData (data) {
       time: `${shop.start.slice(0, 5)} -- ${shop.end.slice(0, 5)}`
     },
     coupon: coupon,
+    manjian: manjian,
     productsTable: products_table,
     delivery_type,
     delivery_fee: ps,

@@ -236,6 +236,10 @@
   padding-right: 10rpx;
 }
 
+.cart-checkout.notenough {
+  background-color: #666;
+}
+
 /* closed */
 .cart-closed {
   width: 180rpx;

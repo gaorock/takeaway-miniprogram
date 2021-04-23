@@ -8,14 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    topupOption : [
-      {id: 1, recharge_price: 100, give_price: 10},
-      {id: 2, recharge_price: 150, give_price: 15},
-      {id: 3, recharge_price: 200, give_price: 20},
-      {id: 4, recharge_price: 300, give_price: 30},
-      {id: 5, recharge_price: 400, give_price: 50},
-      {id: 6, recharge_price: 500, give_price: 60},
-    ],
+    topupOption : [],
     optionID: 1,
     customTopup: '',
     balance: '0.00',
@@ -37,14 +30,42 @@ Page({
     this.setData({customTopup: value})
   },
 
-  onSubmit () {
+  async onSubmit () {
     let amount;
     if (parseFloat(this.data.customTopup) > 0) amount = parseFloat(this.data.customTopup);
     else {
-      const selected = this.data.topupOption.filter(op => op.id === this.data.optionID)[0]
-      amount = selected.amount
+      const selected = this.data.topupOption.filter(op => op.id === this.data.optionID)
+      amount = selected[0].recharge_price
     }
     console.log({amount})
+
+    const topupRes = await fetch(URLs.postTopUp, {
+      method: 'POST',
+      data: {
+        money: amount
+      }
+    })
+
+    if (topupRes.code === 1) {
+      wx.requestPayment({
+        timeStamp: topupRes.data.timeStamp,
+        nonceStr: topupRes.data.nonceStr,
+        package: topupRes.data.package,
+        paySign: topupRes.data.paySign,
+        signType: topupRes.data.signType,
+        success () {
+          console.log('winxin pay success!')
+          wx.navigateBack({
+            delta: 1
+          })
+        },
+        fail (e) {
+          console.warn(e)
+        }
+      })
+    }
+
+    console.log(topupRes)
   },
 
   /**
@@ -58,7 +79,10 @@ Page({
         i.give_price = i.give_price.split('.')[0];
         return i
       })
-      this.setData({topupOption: res.data.list})
+      this.setData({
+        topupOption: res.data.list,
+        optionID: res.data.list[0].id
+      })
     }
 
     const balance = await fetch(URLs.getUserInfo);

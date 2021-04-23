@@ -1,5 +1,5 @@
-const MD5 = require('../../utils/md5');
-const SHA = require('../../utils/sha256');
+const URLs = require('../../utils/api');
+const fetch = require('../../utils/fetch');
 
 // pages/evaluate/evaluate.js
 Page({
@@ -12,7 +12,9 @@ Page({
 
     star: [1,0,0,0,0],
     commit: '',
-    photos: []
+    photos: [],
+    uploading: false,
+    error: null,
   },
 
   _MAX_PHOTO_SIZE: 3,
@@ -38,22 +40,77 @@ Page({
     this.setData({photos: newPhotos});
   },
 
+  upload (img) {
+    const that = this;
+    if (!this._token) this._token = wx.getStorageSync('token');
+
+    return new Promise(resolve => {
+      wx.uploadFile({
+        url: URLs.uploadOneImage,
+        filePath: img,
+        name: 'file',
+        header: {
+          "Cache-Control": "no-cache",
+          'XX-Api-Version': '1.0',
+          'XX-Byte-AppId': 'wxc953033086b6b2b7',
+          'XX-Device-Type': 'wx',
+          'XX-Token': that._token,
+        },
+        success (e) {
+          if (e.statusCode !== 200) resolve(false)
+          
+          const data = JSON.parse(e.data);
+          if (data.code !== 1) resolve(false)
+          // success
+          resolve(data.data.url)            
+        },
+        fail () {
+          console.log('fail');
+          resolve(false)
+        }
+      })
+    })
+  },
+
 
   chooseImage () {
     const that = this;
     const length = this.data.photos.length;
 
-    if (length === this._MAX_PHOTO_SIZE) return;
+    if (length >= this._MAX_PHOTO_SIZE) return;
 
     wx.chooseMedia({
       count: this._MAX_PHOTO_SIZE - length,
       mediaType: 'image',
-      success: function (res) {
-        console.log(res)
-        const photos = res.tempFiles.map(i => i.tempFilePath)
-        that.setData({
-          photos: [...that.data.photos, ...photos]
+      success: async function (res) {
+        const photos = res.tempFiles.map(i => i.tempFilePath);
+        const upload = [];
+        let uploadUrl = [];
+
+        for(const img of photos) {
+          // multi
+          upload.push(await that.upload(img));
+        }
+
+        that.setData({uploading: true})
+
+        Promise.all(upload).then(passRes => {
+
+          const pass = passRes.filter(img => img);
+          console.log({pass})
+          const invalid = photos.length - pass.length;
+          if (invalid > 0) that.setData({error: `有${invalid}张照片上传失败，请重新上传！`});
+
+          that.setData({
+            uploading: false,
+            photos: [...that.data.photos, ...pass]
+          })
+        }).catch(e => {
+          console.log(e)
+          that.setData({error: `照片上传失败，请重新上传！`, uploading: false,});
         })
+
+        
       },
       complete: function () {
         console.log('complete')
@@ -64,21 +121,37 @@ Page({
     })
   },
 
-  onSubmit () {
+  async onSubmit () {
     const stars = this.data.star.reduce((a, c) => a + c, 0);
 
-    console.log({
-      stars, 
-      commit: this.data.commit,
-      photos: this.data.photos
+    const data = {
+      order_id: this._id,
+      star: stars, 
+      content: this.data.commit,
+      imgs: this.data.photos.join(',')
+    }
+    console.log(data)
+
+    const res = await fetch(URLs.postAddCommit, {
+      mehtod: 'POST',
+      data
     })
 
-    console.log(MD5(123))
-    
-    // const sha256 = new SHA("SHA-256", "TEXT", { encoding: "UTF8" })
-    // sha256.update('asdaklsdaklsdjalskd')
-    // const kmac = sha256.getHash("B64", { outputLen: 256 });
-    // console.log(kmac)
+    if (res.code === 1) {
+      wx.navigateBack({
+        delta: 1
+      })
+    } else {
+      this.setData({error: '操作失败，请稍后重试！'})
+    }
+
+    console.log(res)
+
+  },
+
+
+  onErrorDown () {
+    this.setData({error: null})
   },
 
 
@@ -89,6 +162,8 @@ Page({
   onLoad: function (options) {
     const {id} = options;
     if (!id) return;
+
+    this._id = id;
     console.log('evaluate page:', {id})
     // get order data with id
     // then set data to rerender page

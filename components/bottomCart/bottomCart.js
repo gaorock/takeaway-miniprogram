@@ -16,10 +16,11 @@ Component({
       type: Number,
       value: 0
     },
+    allowToPay: Boolean,
     closed: {
       type: Boolean,
       value: false
-    }
+    },
 
   },
 
@@ -29,6 +30,7 @@ Component({
   data: {
     cartList: [],
     isCartOpen: false,
+    allow: false
   },
 
   lifetimes: {
@@ -101,6 +103,8 @@ Component({
 
     // handle user checkout, navigate to 'checkout' page
     async checkout() {
+      if (!this.data.allowToPay) return console.log('not enough')
+
       const token = wx.getStorageSync('token');
       if (this.data.isCartOpen) this.setData({isCartOpen: false});
 

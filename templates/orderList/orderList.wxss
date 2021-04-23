@@ -20,11 +20,11 @@
   flex: 1;
 }
 
-.template-order .title .order-status-0, .template-order .title .order-status-1 {
+.template-order .title .order-status-0, .template-order .title .order-status-1, .template-order .title .order-status-2 {
   color: #fe4a4b;
 }
 
-.template-order .title .order-status-2, .template-order .title .order-status-3 {
+.template-order .title .order-status-3, .template-order .title .order-status-6 {
   color: #999;
 }
 

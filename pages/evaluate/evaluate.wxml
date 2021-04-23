@@ -40,4 +40,6 @@
 
 <view class="button" bind:tap="onSubmit">评价</view>
 
+<Error wx:if="{{error}}" message="{{error}}" bind:onErrorDown="onErrorDown" />
+
 

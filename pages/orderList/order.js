@@ -1,4 +1,7 @@
 const login = require('../../utils/login');
+const URLs = require('../../utils/api');
+const fetch = require('../../utils/fetch');
+
 // pages/order/order.js
 Page({
 
@@ -7,47 +10,40 @@ Page({
    */
   data: {
     tabIndex: 0,
-    list: [
-      {name: 1, id: 1, status: 0, text: '配送中', single: true},
-      {name: 2, id: 2, status: 1, text: '待付款'},
-      {name: 3, id: 3, status: 2, text: '已完成'},
-      {name: 4, id: 4, status: 3, text: '已退款', single: true}
-    ],
+    list: [],
     login: false,
+    inform: null,
+    
+    status: ['待发货', '已发货', '已完成', '退款中', '已退款']
   },
-
-
 
   changeTab (e) {
     const { index } = e.currentTarget.dataset;
     console.log({index})
-    if (index === 2) this.setData({list: []});
-    if (index !== this.data.tabIndex) this.setData({tabIndex: index});
+    
+    if (index !== this.data.tabIndex) {
+      this._lastpage = false;
+      this._currentPage = 1;
+
+      this.setData({
+        tabIndex: index,
+        list: []
+      });
+
+      this._getOrderList(index)
+    }
   },
 
   // template Event
   navigate (e) {
     const { id, status } = e.currentTarget.dataset;
-    if (parseInt(status) === 1) return; // ignore 'wait to pay'
-    console.log({id})
+    const code = parseInt(status.value);
+    // ignore 1待发货 6已退款
+    if (code !== 2 && code !==3 && code !== 5 ) return; 
+    console.log({id, status: code})
     wx.navigateTo({
-      url: `../orderDetail/orderDetail?id=${id}&type=${status}`
+      url: `../orderDetail/orderDetail?id=${id}&type=${code}`
     })
-  },
-
-  oneMoreOrder (e) {
-    const { id } = e.currentTarget.dataset;
-    console.log('oneMoreOrder', id)
-  },
-
-  evaluate (e) {
-    const { id } = e.currentTarget.dataset;
-    console.log('evaluate', id)
-  },
-
-  toPay (e) {
-    const { id } = e.currentTarget.dataset;
-    console.log('toPay', id)
   },
 
   goHome () {
@@ -62,74 +58,97 @@ Page({
     console.log(res);
     if (res) {
       this.setData({login: true})
-      this._getOrderList();
+      this._getOrderList(this.data.tabIndex);
     }
-  },
-
-  _getOrderList () {
-    // ...
-    wx.switchTab({
-      url: '/pages/personal/personal'
-    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    const {page} = options;
-    const token = wx.getStorageSync('token');
-    console.log(!!token)
-    this.setData({login: !!token});
-    if (page !== undefined) this.setData({tabIndex: parseInt(page)});
+  onLoad (options) {
+    if (options.page) this.setData({tabIndex: parseInt(options.page)})
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
+    console.log('show')
+    const token = wx.getStorageSync('token');
+    this.setData({login: !!token});
+    this._currentPage = 1;
+    this._getOrderList(this.data.tabIndex, true);
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+  async _getOrderList (status, reload) {
+    let oldList = this.data.list;
 
+    if (reload) {
+      this._lastpage = false;
+      this._currentPage = 1;
+      oldList = [];
+    }
+    if (this._lastpage) return;
+    const ref = [1, 4, 5]
+    
+    const order = await fetch(URLs.getOrderList, {
+      method: 'POST',
+      data: {
+        page_num: this._currentPage,
+        status: ref[status]
+      }
+    });
+    if (order.code !== 1) return
+    if (order.data.length === 0) return this._lastpage = true;
+    this._currentPage++;
+    this.setData({
+      list: [...oldList, ...order.data],
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
 
+  async toCancel (e) {
+    const { id } = e.currentTarget.dataset;
+    console.log({id})
+    const res = await fetch(URLs.postOrderRefund, {
+      method: 'POST',
+      data: {
+        id
+      }
+    })
+    if (res.code === 1) this.setData({inform: '取消订单成功！'})
+
+    console.log(res)
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+  async toConfirm (e) {
+    const { id } = e.currentTarget.dataset;
+    console.log({id})
+    const res = await fetch(URLs.receiveOrder, {
+      method: 'POST',
+      data: {id}
+    })
+    if (res.code === 1) this.setData({inform: '确认收货成功！'})
+    console.log(res)
+    
+  },
 
+  async toPay (e) {
+    const { id } = e.currentTarget.dataset;
+    console.log('to pay', id)
+    wx.navigateTo({
+      url: '/pages/pay/pay?order_id='+id
+    })
+  },
+
+  onMsgDown() {
+    this.setData({inform: null})
+    this._getOrderList(this.data.tabIndex, true);
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log('bottom')
+    this._getOrderList(this.data.tabIndex);
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

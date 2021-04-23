@@ -162,6 +162,7 @@
 
 .order-container .order-type-wrapper .tab-content-2 .take-info .left {
   padding-right: 50rpx;
+  width: 240rpx;
   position: relative;
 }
 
@@ -174,6 +175,10 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.order-container .order-type-wrapper .tab-content-2 .take-info .left .flex-1 {
+  flex: 1;
 }
 
 .order-container .order-type-wrapper .tab-content-2 .take-info .left .time-text {
@@ -205,8 +210,13 @@
 }
 
 .order-container .order-type-wrapper .tab-content-2 .take-info .right .phone-num {
+  display: flex;
   font-size: 28rpx;
   font-weight: bold;
+}
+
+.order-container .order-type-wrapper .tab-content-2 .take-info .right .phone-num input {
+  flex: 1;
 }
 
 .order-container .order-type-wrapper .tab-content-2 .take-info .right .phone-num text {

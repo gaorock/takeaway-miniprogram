@@ -17,7 +17,7 @@
       </view>
     </view>
     <view wx:if="{{closed}}" class="cart-closed">下班了</view>
-    <view wx:else class="cart-checkout" bind:tap="checkout">去结算</view>
+    <view wx:else class="cart-checkout{{allowToPay?'':' notenough'}}" bind:tap="checkout">去结算</view>
   </view>
   <!-- Cart Detail -->
   <view wx:if="{{isCartOpen}}" class="cart-detail-wrapper">

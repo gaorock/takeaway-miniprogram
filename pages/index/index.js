@@ -13,13 +13,14 @@ Page({
   data: {
     loading: true,
     topImage: '/assets/images/home-top.png',
-    cartItem: {}, // stores shopping cart info
+    
     shop: {},     // for render home page's shop info. logo, name etc.
     catelist: [], // for render home left menu list
     products: [], // for render home right pruducts list
     coupon: [],   // for render home top 'coupon' section 
+    manjian: [],  // for render home top 'man_jian' section
 
-
+    cartItem: {}, // stores shopping cart info
     cartTotal: 0,       // total amount to display at bottom cart bar
     priceTotal: [],     // total price to display at bottom cart bar
     
@@ -31,8 +32,10 @@ Page({
     popup: false,        // home page, coupon popup
 
     shop_closed: false,         // shop status of closed 
-    default_delivery_fee: 0,    // initial delivery fee
 
+
+    default_delivery_fee: 0,    // initial delivery fee
+    allowToPay: false
   },
 
 
@@ -89,9 +92,14 @@ Page({
       }
     }
     // format 'price'
-    const formatedPrice = String(price).split('.')
-
-    this.setData({cartItem: temp, cartTotal: total, priceTotal: this._format_price(price)});
+    // const formatedPrice = String(price).split('.')
+    const allowToPay = price >= this.data.default_delivery_fee;
+    this.setData({
+      cartItem: temp, 
+      cartTotal: total, 
+      priceTotal: this._format_price(price),
+      allowToPay
+    });
     wx.setStorageSync('cart', temp)
   },
 
@@ -109,14 +117,19 @@ Page({
     });
 
     // console.log(cartItemToUpdate)
-
-    this.setData({cartTotal: total, priceTotal: this._format_price(price), cartItem: cartItemToUpdate})
+    const allowToPay = price >= this.data.default_delivery_fee;
+    this.setData({
+      cartTotal: total, 
+      priceTotal: this._format_price(price), 
+      allowToPay,
+      cartItem: cartItemToUpdate
+    })
     wx.setStorageSync('cart', cartItemToUpdate)
   },
 
   onClearOutCart () {
     // console.log('onClearOutCart');
-    this.setData({cartTotal: 0, priceTotal: 0, cartItem: {}})
+    this.setData({cartTotal: 0, priceTotal: 0, cartItem: {}, allowToPay: false})
     wx.removeStorageSync('cart')
   },
 
@@ -183,10 +196,21 @@ Page({
       }
     }
 
-    this.setData({cartItem: temp, cartTotal: total, priceTotal: this._format_price(totalprice), showMultiID: null});
+    const allowToPay = totalprice >= this.data.default_delivery_fee;
+    this.setData({
+      cartItem: temp, 
+      cartTotal: total, 
+      priceTotal: this._format_price(totalprice), 
+      allowToPay,
+      showMultiID: null
+    });
     wx.setStorageSync('cart', temp);
     
     
+  },
+
+  onShow () {
+    this._init_cart();
   },
 
   async onLoad () {
@@ -199,6 +223,8 @@ Page({
     
     console.log(json)
 
+    // save shop info 
+    wx.setStorageSync('shop_phone', res.data.shop.shop_tel);
     // save a copy for cart detail list
     wx.setStorageSync('products', json.productsTable);
 
@@ -207,8 +233,9 @@ Page({
       products: json.products,
       catelist: json.cate,
       coupon: json.coupon,
+      manjian: json.manjian,
       shop_closed: json.shop_closed,
-      delivery_fee: json.delivery_fee
+      default_delivery_fee: json.delivery_fee
     })
 
     // save 'delivery_type': 1配送2自取3随意
@@ -252,9 +279,11 @@ Page({
             price+=(subPrice*cartItem[itemID][itemSpec])
           }
         }
-
-        this.setData({cartItem: cartItem, cartTotal: total, priceTotal: this._format_price(price)});
-     }    
+        const allowToPay = price >= this.data.default_delivery_fee;
+        this.setData({cartItem: cartItem, cartTotal: total, priceTotal: this._format_price(price), allowToPay});
+     } else {
+       this.setData({cartItem: {}, cartTotal: 0, priceTotal: [], allowToPay: false})
+     }
   },
 
 

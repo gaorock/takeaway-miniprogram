@@ -1,0 +1,173 @@
+page {
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.sec-1 {
+  position: relative;
+  width: 100%;
+  font-size: 30rpx;
+}
+
+.sec-1 .topholder {
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+}
+
+.sec-1 .topholder image {
+  position: absolute;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  left: 50%;
+  bottom: -50rpx;
+  transform: translateX(-50%);
+  z-index: 1;
+  border: 2rpx solid #fff;
+  background-color: #fff;
+}
+
+.sec-1 .info {
+  position: relative;
+  width: 100%;
+  height: 200rpx;
+  background-color: #f7d476;
+  padding: 70rpx 20rpx 20rpx 20rpx;
+  border-radius: 20rpx 20rpx 0 0;
+  text-align: center;
+}
+
+.sec-1 .info .name {
+  font-weight: bold;
+}
+
+.sec-1 .info .text {
+  color: #333333;
+}
+
+.sec-2 {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  padding: 40rpx;
+  padding-bottom: 50rpx;
+  text-align: center;
+  border-radius: 0 0 20rpx 20rpx;
+}
+
+.sec-2 .payamount {
+  font-weight: bold;
+  font-size: 28rpx;
+  padding: 20rpx 0 40rpx 0;
+}
+
+.sec-2 .payamount text {
+  font-size: 56rpx;
+}
+
+.sec-2 .paybutton {
+  background-color: #57be6a;
+  color: #fff;
+  width: 100%;
+  padding: 20rpx 0;
+}
+
+.sec-2 .notice-1-1, .sec-2 .notice-4-1 {
+  padding: 20rpx 0;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.sec-2 .notice-1-2, .sec-2 .notice-4-2 {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.sec-2 image {
+  width: 200rpx;
+  height: 200rpx;
+  position: absolute;
+  top: -40rpx;
+  right: -10rpx;
+  transform: rotate(25DEG);
+}
+
+.sec-2 .bottom-dots {
+  position: absolute;
+  bottom: -11rpx;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 20rpx;
+}
+
+.sec-2 .bottom-dots .dot {
+  height: 22rpx;
+  width: 22rpx;
+  background-color: #f4f4f4;
+  border-radius: 50%;
+}
+
+.sec-3 {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 20rpx;
+  border-radius: 20rpx;
+}
+
+.sec-3 .list-item {
+  display: flex;
+}
+
+.sec-3 .list-item image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.sec-3 .list-item .detail {
+  flex: 1;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+}
+
+.sec-3 .list-item .detail .num {
+  font-size: 26rpx;
+  color: #aaa;
+}
+
+.sec-3 .list-item .price {
+  color: #333;
+}
+
+.sec-3 .list-item .price text {
+  font-size: 24rpx;
+}
+
+.sec-4 {
+  padding: 40rpx 0;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.sec-4 .title {
+  padding-bottom: 10rpx;
+  font-size: 28rpx;
+}
+
+.findother {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  padding: 20rpx;
+}
+
+.findother .button {
+  padding: 20rpx 0;
+  width: 100%;
+  background-color: #f7d476;
+  text-align: center;
+  font-weight: bold;
+}

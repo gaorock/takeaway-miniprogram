@@ -91,6 +91,7 @@
   text-align: center;
   font-size: 28rpx;
   border-radius: 40rpx;
+  font-weight: normal;
 }
 
 .order-pay-container .button-group .button.active {

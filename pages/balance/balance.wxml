@@ -12,7 +12,7 @@
       <view class="text">我的余额（元）</view>
     </view>
     <view class="money">
-      <view class="amount">68.40</view>
+      <view class="amount">{{consume}}</view>
       <view class="text">消费金额（元）</view>
     </view>
     <view class="topup" bind:tap="topup">充值</view>
@@ -28,10 +28,10 @@
       wx:for="{{logs}}"
       wx:key="index">
         <view class="left">
-          <view class="balance-type">充值</view>
-          <view class="balance-date">2021-03-09 16:35</view>
+          <view class="balance-type">{{item.description}}</view>
+          <view class="balance-date">{{item.create_time}}</view>
         </view>
-        <view class="right">-28.40</view>
+        <view class="right">{{item.change}}</view>
       </view>
 
       <view class="noitem" wx:if="{{logs.length === 0}}">没有记录</view>

@@ -32,9 +32,12 @@ Component({
   methods: {
     close () {
       this.setData({ open: false });
+      this.triggerEvent('onMsgDown');
+      this.triggerEvent('onErrorDown');
     },
 
     onTransitionEnd () {
+      this.triggerEvent('onMsgDown');
       this.triggerEvent('onErrorDown');
     }
   }

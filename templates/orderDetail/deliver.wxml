@@ -6,14 +6,16 @@
   <view class="sec status-container">
     <view class="title-text">骑手正在配送，请耐心等待</view>
     <view class="utils-done">
-      <view class="seperator">
+      <view class="seperator" bind:tap="toConfirm">
         <image src="/assets/icons/detail-refund.png" mode="widthFix" />
-        <text>申请退款</text>
+        <text>确认收货</text>
       </view>
-      <view>
+      <view bind:tap="makePhoneCall">
         <image src="/assets/icons/detail-shop.png" mode="widthFix" />
         <text>联系商家</text>
       </view>
     </view>
   </view>
 </template>
+
+

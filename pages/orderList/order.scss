@@ -5,10 +5,14 @@ page {
 }
 
 .tab-menu-wrapper {
+  position: fixed;
   display: flex;
+  width: 100vw;
   height: 100rpx;
+  top: 0;
   align-items: flex-end;
   background-color: #fff;
+  z-index: 1;
 
   .tab {
     font-size: 28rpx;
@@ -38,10 +42,13 @@ page {
 }
 
 .order-list-container {
+  position: relative;
   background-color: #f2f2f2;
   padding: 0 20rpx;
-  padding-bottom: 50rpx;
+  padding-top: 100rpx;
+  padding-bottom: 30rpx;
   height: calc(100vh - 100rpx);
+  z-index: 0;
 
   .noorder {
     display: flex;

@@ -9,9 +9,9 @@
 </view>
 
 <view class="order-detail-container">
-  <template is="order-finish" wx:if="{{detailType === 2}}"></template>
-  <template is="order-deliver" wx:if="{{detailType === 0}}"></template>
-  <template is="order-refund" wx:if="{{detailType === 3}}"></template>
+  <template is="order-finish" wx:if="{{detailType === 3}}"></template>
+  <template is="order-deliver" wx:if="{{detailType === 2}}"></template>
+  <template is="order-refund" wx:if="{{detailType === 5}}"></template>
   
 
   <view class="sec orderlist">
@@ -21,10 +21,10 @@
       <image class="item-image" mode="aspectFill" src="{{prod.thumbnail}}" />
       <view class="right">
         <view class="title-wrapper">
-          <text class="title">{{prod.name}}</text>
-          <text class="price">¥<text>{{prod.price[0]}}.{{prod.price[1]}}</text></text></view>
-        <view class="tags">{{prod.tag}}</view>
-        <view class="amount">x{{prod.amount}}</view>
+          <text class="title">{{prod.post_title}}</text>
+          <text class="price">¥<text>{{prod.price}}</text></text></view>
+        <!-- <view class="tags">{{prod.tag}}</view> -->
+        <view class="amount">x{{prod.num}}</view>
       </view>
     </view>
 
@@ -59,8 +59,14 @@
   <view class="sec">
     <view class="title">地址信息</view>
     <view class="address-wrapper">
-      <view class="address">河南省新乡市红旗区新飞大道高新技术创业园</view>
-      <view class="contact">李菁华  18749198122</view>
+      <block wx:if="{{is_ziqu}}">
+        <view class="address">{{shop_address}}</view>
+        <view class="contact">{{shop_tel}}</view>
+      </block>
+      <block wx:else>
+        <view class="address">{{address}} {{detail}}</view>
+        <view class="contact">{{contact}} {{mobile}}</view>
+      </block>
     </view>
   </view>
   <view class="sec">
@@ -68,25 +74,27 @@
     <view>
       <view class="detail-item">
         <text class="detail-title">订单状态</text>
-        <text class="content">已完成</text>
+        <text class="content">{{status.msg}}</text>
       </view>
       <view class="detail-item">
         <text class="detail-title">订单编号</text>
-        <text class="content">2021030810010156</text>
+        <text class="content">{{order_sn}}</text>
       </view>
       <view class="detail-item">
         <text class="detail-title">下单时间</text>
-        <text class="content">2021-03-08 08:54:21</text>
+        <text class="content">{{create_time}}</text>
       </view>
       <view class="detail-item">
         <text class="detail-title">付款时间</text>
-        <text class="content">2021-03-08 08:54:57</text>
+        <text class="content">{{pay_time}}</text>
       </view>
       <view class="detail-item memo">
         <text class="detail-title">买家留言</text>
-        <view class="content">不用带吸管了，我这边有吸管，弄 的甜一点，喜欢甜的</view>
+        <view class="content">{{remark}}</view>
       </view>
     </view>
   </view>
 </view>
+
+<Inform wx:if="{{inform}}" message="{{inform}}" bind:onMsgDown="onMsgDown" />
 

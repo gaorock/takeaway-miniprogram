@@ -1,0 +1,173 @@
+page {
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+.sec-1 {
+  position: relative;
+  width: 100%;
+  font-size: 30rpx;
+
+  .topholder {
+    position: relative;
+    width: 100%;
+    height: 100rpx;
+
+
+    image {
+      position: absolute;
+      width: 100rpx;
+      height: 100rpx;
+      border-radius: 50%;
+      left: 50%;
+      bottom: -50rpx;
+      transform: translateX(-50%);
+      z-index: 1;
+      border: 2rpx solid #fff;
+      background-color: #fff;
+    }
+  }
+
+  .info {
+    position: relative;
+    width: 100%;
+    height: 200rpx;
+    background-color: #f7d476;
+    padding: 70rpx 20rpx 20rpx 20rpx;
+    border-radius: 20rpx 20rpx 0 0;
+    text-align: center;
+
+    .name {
+      font-weight: bold;
+    }
+    .text {
+      color: #333333;
+    }
+  }
+}
+
+.sec-2 {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  padding: 40rpx;
+  padding-bottom: 50rpx;
+  text-align: center;
+  border-radius: 0 0 20rpx 20rpx;
+
+  .payamount {
+    font-weight: bold;
+    font-size: 28rpx;
+    padding: 20rpx 0 40rpx 0;
+    
+    text {
+      font-size: 56rpx;
+    }
+  }
+
+  .paybutton {
+    background-color: #57be6a;
+    color: #fff;
+    width: 100%;
+    padding: 20rpx 0;
+  }
+
+  .notice-1-1, .notice-4-1 {
+    padding: 20rpx 0;
+    font-size: 36rpx;
+    font-weight: bold;
+  }
+
+  .notice-1-2, .notice-4-2 {
+    font-size: 28rpx;
+    color: #333;
+  }
+
+  image {
+    width: 200rpx;
+    height: 200rpx;
+    position: absolute;
+    top: -40rpx;
+    right: -10rpx;
+    transform: rotate(25DEG);
+  }
+
+  .bottom-dots {
+    position: absolute;
+    bottom: -11rpx;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20rpx;
+
+    .dot {  
+      height: 22rpx;
+      width: 22rpx;
+      background-color: #f4f4f4;
+      border-radius: 50%;
+    }
+  }
+
+ }
+
+.sec-3 {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 20rpx;
+  border-radius: 20rpx;
+
+  .list-item {
+    display: flex;
+
+    image{ 
+      width: 120rpx;
+      height: 120rpx;
+    }
+
+    .detail {
+      flex: 1;
+      font-size: 28rpx;
+      padding: 0 20rpx;
+
+      .num {
+        font-size: 26rpx;
+        color: #aaa;
+      }
+    }
+    
+    .price {
+      color: #333;
+      
+      text {
+        font-size: 24rpx;
+      }
+    }
+  }
+}
+
+.sec-4 {
+  padding: 40rpx 0;
+  font-size: 24rpx;
+  color: #666;
+
+  .title {
+    padding-bottom: 10rpx;
+    font-size: 28rpx;
+  }
+}
+
+.findother {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  padding: 20rpx;
+
+  .button {
+    padding: 20rpx 0;
+    width: 100%;
+    background-color: #f7d476;
+    text-align: center;
+    font-weight: bold;
+  }
+}

@@ -14,7 +14,7 @@
         <image src="/assets/icons/detail-talk.png" mode="widthFix" />
         <text>评价</text>
       </view>
-      <view>
+      <view bind:tap="makePhoneCall">
         <image src="/assets/icons/detail-shop.png" mode="widthFix" />
         <text>联系商家</text>
       </view>

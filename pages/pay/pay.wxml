@@ -2,7 +2,7 @@
 <view class="order-pay-container">
   <view class="pay-summary">
     <view class="total currency">￥<text>{{money}}</text></view>
-    <view class="number">订单编号2021030810010156</view>
+    <view class="number">订单编号{{order_sn}}</view>
   </view>
   <view class="pay-wrapper">
     <view class="pay-title-text">支付方式</view>
@@ -15,14 +15,26 @@
       <image class="icon" src="/assets/icons/yue-pay.png" mode="widthFix" />
       <view class="yue-text">
         <text>余额支付</text>
-        <text class="num currency">￥248.40</text>
+        <text class="num currency">￥{{balance}}</text>
+      </view>
+      <image class="tick" src="/assets/icons/tick.png" mode="widthFix" />
+    </view>
+    <view class="pay-method{{method === 2?' active':''}}" bind:tap="changeMethod" data-method="{{2}}">
+      <image class="icon" src="/assets/icons/otherpay.png" mode="widthFix" />
+      <view class="yue-text">
+        <text>找人代付</text>
       </view>
       <image class="tick" src="/assets/icons/tick.png" mode="widthFix" />
     </view>
   </view>
-  <view class="button-group">
-    <view class="button active" bind:tap="pay" open-type="getUserInfo">支付</view>
+  <view class="button-group" wx:if="{{method == 2}}">
+    <button class="button active" open-type="share">发给微信好友</button>
+    <view class="button" bind:tap="cancel">取消</view>
+  </view>
+  <view class="button-group" wx:else>
+    <view class="button active" bind:tap="pay">支付</view>
     <view class="button" bind:tap="cancel">取消支付</view>
   </view>
+  
 </view>
 

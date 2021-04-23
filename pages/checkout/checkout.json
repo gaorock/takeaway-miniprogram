@@ -5,6 +5,7 @@
   "backgroundColor": "#fe4a4b",
   "backgroundTextStyle": "light",
   "usingComponents": {
-    "Setting": "../../components/openSetting/openSetting"
+    "Setting": "../../components/openSetting/openSetting",
+    "Error": "../../components/error/error"
   }
 }

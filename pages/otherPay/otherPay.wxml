@@ -1,0 +1,54 @@
+<!--pages/otherPay/otherPay.wxml-->
+<view class="sec-1">
+  <view class="topholder">
+    <image src="{{avatar}}" mode="aspectFill" />
+  </view>
+  <view class="info">
+    <view class="name">您的好友:{{username}}</view>
+    <view class="text" wx:if="{{status === 0}}">Hi，你和我的距离只差一顿外卖～</view>
+    <view class="text" wx:if="{{status === 1}}">来晚啦，已被我的好友抢先买单了～</view>
+    <view class="text" wx:if="{{status === 4}}">很遗憾，我的订单已取消～</view>
+  </view>
+</view>
+<view class="sec-2">
+  <block wx:if="{{status === 0}}">
+    <view class="payamount">需付款 ¥<text>{{payAmount}}</text></view>
+    <view bind:tap="topay" class="paybutton">为好友买单</view>
+  </block>
+  <block wx:if="{{status === 1 || status === 9}}">
+    <view class="notice-1-1">支付成功</view>
+    <view class="notice-1-2" wx:if="{{status === 1}}">好友的订单已被别人支付</view>
+    <view class="notice-1-2" wx:if="{{status === 9}}">好友的订单已被您支付成功</view>
+    <image src="/assets/icons/stamp.png" mode="widthFix" />
+  </block>
+  <block wx:if="{{status === 4}}">
+    <view class="notice-4-1">订单已取消</view>
+    <view class="notice-4-2">好友的订单已取消</view>
+  </block>
+  <view class="bottom-dots">
+    <view class="dot" wx:for="{{[5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]}}"
+    wx:key="index"></view>
+  </view>
+</view>
+
+<view class="sec-3">
+  <view wx:for="{{list}}" wx:key="index" class="list-item">
+    <image src="{{item.thumbnail}}" mode="aspectFill" />
+    <view class="detail">
+      <view>{{item.post_title}}</view>
+      <view class="num">x{{item.num}}</view>
+    </view>
+    <view class="price"><text>¥</text>{{item.price}}</view>
+  </view>
+</view>
+<view class="sec-4">
+  <view class="title">说明</view>
+  <view>1. 付款前请先与好友确认无误，避免受骗。</view>
+  <view>2. 付款成功后，如需申请退款，可以联系好友申请退款。</view>
+  <view>3. 当代付订单退款成功后，实付金额将原路退还代付人。</view>
+</view>
+
+<view wx:if="{{status !== 0}}" class="findother">
+  <view class="button" bind:tap="findother">我也要找人买单</view>
+  <view style="height: {{placeholder}}rpx"></view>
+</view>

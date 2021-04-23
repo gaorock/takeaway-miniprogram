@@ -4,5 +4,7 @@
   "navigationBarTitleText": "订单详情",
   "backgroundColor": "#fe4a4b",
   "backgroundTextStyle": "light",
-  "usingComponents": {}
+  "usingComponents": {
+    "Inform": "../../components/error/error"
+  }
 }

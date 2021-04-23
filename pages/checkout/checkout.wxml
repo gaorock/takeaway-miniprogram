@@ -30,13 +30,13 @@
         </picker>
       </block>
       
-      <view wx:if="{{contact && phone}}" class="phone">{{contact}} {{phone}}</view>
-      <view wx:else class="delivery_type_1_input_wapper"> 
-        <input class="delivery_type_1_input" 
-        placeholder="请输入联系人" placeholder-class="placeholder" 
+      <!-- <view wx:if="{{contact && phone}}" class="phone">{{contact}} {{phone}}</view> -->
+      <view class="delivery_type_1_input_wapper"> 
+        <input class="delivery_type_1_input" value="{{contact}}"
+        placeholder="请输入联系人" placeholder-class="placeholder" maxlength="10"
         bind:input="onFixedDeliveryNameChange"/>
-        <input class="delivery_type_1_input" type="digit"
-        placeholder="请输入联系电话"  placeholder-class="placeholder" 
+        <input class="delivery_type_1_input" type="digit" maxlength="11"
+        placeholder="请输入联系电话"  placeholder-class="placeholder"  value="{{phone}}"
         bind:input="onFixedDeliveryPhoneChange"/>
       </view>
 
@@ -59,11 +59,22 @@
       <view class="take-info">
         <view class="left">
           <view class="time-text">自取时间</view>
-          <view class="time-num">11:30<image class="icon" src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix" /></view>
+          <picker mode="selector" class="flex-1"
+          value="{{ziqu_time_index}}" range="{{ziqu_range}}" bind:change="onZiquTimeChange">
+            <view class="time-num">
+              <view>{{ziqu_time || '立即取餐'}}</view>
+              <image src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix" class="icon"  />
+            </view>
+          </picker>
+          <!-- <view class="time-num">11:30<image class="icon" src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix" /></view> -->
         </view>
         <view class="right">
           <view class="phone-text">预留电话</view>
-          <view class="phone-num">{{phone || '填写电话'}}<text>（点击修改）</text></view>
+          <view class="phone-num">
+            <input value="{{phone}}" placeholder="填写电话" maxlength="11"
+            type="digit" bind:input="onChangePhone"/>
+            <text>（点击修改）</text>
+          </view>
         </view>
       </view>
       <view class="agree">
@@ -110,7 +121,7 @@
     </view>
     <view class="title-item">
       <view class="desc">合计</view>
-      <view class="price red">¥<text>{{checkout.price[0]}}.{{checkout.price[1]}}</text></view>
+      <view class="price red">¥<text>{{checkout.price}}</text></view>
     </view>
 
   </view>
@@ -140,5 +151,5 @@
   </view>
 </view>
 
-
+<Error wx:if="{{error}}" message="{{error}}" bind:onErrorDown="onErrorDown" />
 <Setting wx:if="{{showSetting}}" bind:confirmSetting="onConfirmSetting" />

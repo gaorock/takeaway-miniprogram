@@ -33,6 +33,9 @@
             <text>蜜雪冰城（人民路店）</text>
           </view>
         </view>
+        <view class="sec-man-jian">
+          <text wx:for="{{manjian}}" wx:key="index">满{{item.limit}}减{{item.money}}</text>
+        </view> 
         <view class="middle-sec-3">
           <image src="/assets/icons/notice.png" class="notice-icon" mode="widthFix"></image>
           <view class="notice-text-wrapper">
@@ -72,7 +75,7 @@
 
 
   <Cart 
-    total="{{cartTotal}}" price="{{priceTotal}}" 
+    total="{{cartTotal}}" price="{{priceTotal}}" allowToPay="{{allowToPay}}"
     deliveryFee="{{default_delivery_fee}}" closed="{{shop_closed}}"
     wx:if="{{cartTotal > 0}}" 
     bind:cartAmountChange="onCartAmountChange"

@@ -62,8 +62,8 @@ const api = {
   // 1.2.2 mobile
   // 1.2.3 area
 
-  // 2. ziqu_time: XXXX-XX-XX
-  // 2. mobile:
+  // 2.1 ziqu_time: HH-MM
+  // 2.2 mobile:
   // goods: [] {id, subId, num} 
 
   // return: order_id
@@ -73,7 +73,7 @@ const api = {
   getOrderDetail: 'user/order/get_order_detail',
 
   /** @name 支付*/
-  // 发起 微信支付
+  // 发起 账户充值
   // money
   postTopUp: '/user/balance/WxPay',
   // 充值金额列表 - GET (null)
@@ -84,10 +84,12 @@ const api = {
   // 余额支付
   // id 订单ID
   postBalancePay: 'user/order/balance_pay',
-  // 账户充值
-  // postRecharge: '/user/Balance/recharge',
   // 余额明细 - GET (null)
   getBalanceLogs: '/user/balance/logs',
+   /** @name 代付🥼 */
+  otherPay: 'user/dai_pay_order/dai_pay_btn',
+  getOtherPay: '/user/dai_pay_order/dai_pay_page',
+  otherPayRequest: '/user/dai_pay_order/dai_pay',
 
 
 
@@ -119,7 +121,7 @@ const api = {
 
   /** @name 订单列表 */
   // 3.1 status 1全部 2待发货 3待收货	4已完成 5退款
-  // 
+  //  return 1待发货 2已发货 3已完成 4已取消（待付款） 5退款中 6已退款 
   getOrderList: 'user/Order/orderlist',
   // 订单详情
   // id: 订单ID
@@ -131,7 +133,7 @@ const api = {
   // id
   postOrderRefund: 'user/order/refundorder',
 
-
+  /** @name 其他 */
   // 上传图片
   // file = jpg, png, gif
   uploadOneImage: 'user/upload/wxapp_one',
@@ -145,8 +147,9 @@ const api = {
   // 获取用户账户信息 - GET (null)
   getUserInfo: '/user/Profile/userInfo',
   // 
-  getAgreement: 'user/order/agreement'
+  getAgreement: 'user/order/agreement',
 
+ 
 }
 
 const joinedApiUrl =  {};

@@ -5,7 +5,7 @@
   </view>
   <view class="sec refund-container">
     <view class="status-text">等待商家确认退款</view>
-    <view class="contact-shop">
+    <view class="contact-shop" bind:tap="makePhoneCall">
       <image src="/assets/icons/detail-shop.png" mode="widthFix" />
       <text>联系商家</text>
     </view>

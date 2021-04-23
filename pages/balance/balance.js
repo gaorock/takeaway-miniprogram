@@ -9,7 +9,8 @@ Page({
    */
   data: {
     balance: '0.00',
-    logs: []
+    consume: '0.00',
+    logs: [],
   },
 
   topup () {
@@ -23,17 +24,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
-    const token = wx.getStorageSync('token');
-    if (!token) return this.setData({login: false});
-    
-    this.setData({login: true});
-    const balance = await fetch(URLs.getUserInfo);
-    if (balance.code === 1) this.setData({balance: balance.data.balance})
-    
-
-    const logs = await fetch(URLs.getBalanceLogs);
-    console.log(logs)
-    if (logs.code === 1) this.setData({logs: logs.data.list.data})
     
   },
 
@@ -47,8 +37,29 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow:async function () {
+    const token = wx.getStorageSync('token');
+    if (!token) return this.setData({login: false});
+    
+    this.setData({login: true});
+    const balance = await fetch(URLs.getUserInfo);
+    if (balance.code === 1) this.setData({
+      balance: balance.data.balance,
+      consume: this._formatMoney(balance.data.total_consume_price)
+    })
+    
 
+    const logs = await fetch(URLs.getBalanceLogs);
+    console.log(logs)
+    if (logs.code === 1) this.setData({
+      logs: logs.data.list
+    })
+  },
+
+  _formatMoney (money) {
+    const moneyArray = money.toString().split('.');
+    if (!moneyArray[1]) moneyArray[1] = '00';
+    return moneyArray.join('.')
   },
 
   /**

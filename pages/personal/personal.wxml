@@ -9,12 +9,12 @@
   </view>
 </view>
 <view class="personal-sec personal-order-wrapper">
-  <view>
+  <!-- <view>
     <navigator url="/pages/coupon/coupon">
       <image src="/assets/icons/coupon.png" mode="aspectFit" />
       <view class="text">优惠券</view>
     </navigator>
-  </view>
+  </view> -->
   
   <view>
     <navigator url="/pages/orderList/order?page=0">
@@ -37,11 +37,11 @@
 </view>
 <view class="personal-sec personal-money-wrapper">  
   <view class="money">
-    <view class="amount">247.60</view>
+    <view class="amount">{{balance}}</view>
     <view class="text">我的余额（元）</view>
   </view>
   <view class="money">
-    <view class="amount">68.40</view>
+    <view class="amount">{{consume}}</view>
     <view class="text">消费金额（元）</view>
   </view>
   <navigator url="/pages/balance/balance"><view class="detail">详情</view></navigator>

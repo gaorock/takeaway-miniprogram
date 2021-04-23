@@ -7,7 +7,8 @@
     {{item}}
   </view>
 </view>
-<scroll-view class="order-list-container" scroll-y="{{true}}">
+
+<view class="order-list-container">
   <block wx:if="{{login === true}}">
     <template wx:if="{{list.length>0}}" is="orderlist" data="{{item}}" wx:for="{{list}}" wx:key="index"/>
     <view wx:if="{{list.length === 0}}" class="noorder">
@@ -21,4 +22,8 @@
       <view bind:tap="login">登陆</view>
     </view>
   </block>
-</scroll-view>
+</view>
+
+<Inform wx:if="{{inform}}" message="{{inform}}" bind:onMsgDown="onMsgDown"/>
+
+

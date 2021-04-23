@@ -11,6 +11,8 @@ Page({
    */
   data: {
     login: false,
+    balance: '0.00',
+    consume: '0.00',
   },
   /**
    * 生命周期函数--监听页面加载
@@ -18,6 +20,22 @@ Page({
   onLoad: async function (options) {
     const login = check_login();
     this.setData({login})
+
+    const balance = await fetch(URLs.getUserInfo);
+    if (balance.code === 1) {
+      this.setData({
+        balance: balance.data.balance,
+        consume: this._formatMoney(balance.data.total_consume_price)
+      })
+    }
+    
+    
+  },
+
+  _formatMoney (money) {
+    const moneyArray = money.toString().split('.');
+    if (!moneyArray[1]) moneyArray[1] = '00';
+    return moneyArray.join('.')
   },
 
   async getUserProfile () {
