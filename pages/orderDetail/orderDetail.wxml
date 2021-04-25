@@ -1,6 +1,7 @@
 <import src="../../templates/orderDetail/finish.wxml" />
 <import src="../../templates/orderDetail/deliver.wxml" />
 <import src="../../templates/orderDetail/refund.wxml" />
+<import src="../../templates/orderDetail/other.wxml" />
 <!--pages/orderDetail/orderDetail.wxml-->
 <view class="linear-background">
   <view class="block"></view>
@@ -12,6 +13,7 @@
   <template is="order-finish" wx:if="{{detailType === 3}}"></template>
   <template is="order-deliver" wx:if="{{detailType === 2}}"></template>
   <template is="order-refund" wx:if="{{detailType === 5}}"></template>
+  <template is="order-other" wx:else data="{{statusText}}"></template>
   
 
   <view class="sec orderlist">

@@ -64,6 +64,19 @@ Page({
     }
   },
 
+  toEvaluate(e) {
+    const {id} = e.currentTarget.dataset;
+    console.log({id})
+
+    const currentOrder = this.data.list.filter(o => o.id === id);
+    if (currentOrder[0]) wx.setStorageSync('orderToBeEvaluated', currentOrder[0])
+    console.log({currentOrder})
+    wx.navigateTo({
+      url: `/pages/evaluate/evaluate?id=${id}`
+    })
+  },
+  
+
   /**
    * 生命周期函数--监听页面加载
    */

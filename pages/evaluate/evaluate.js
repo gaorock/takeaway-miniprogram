@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    data: {}, // updated when id changes
+    list: [], // updated when id changes
+    total_price: 0,
 
     star: [1,0,0,0,0],
     commit: '',
@@ -172,6 +173,12 @@ Page({
     if (!id) return;
     this._from = !!from;
     this._id = id;
+
+    const orderToBeEvaluated = wx.getStorageSync('orderToBeEvaluated');
+    console.log({orderToBeEvaluated})
+    if (orderToBeEvaluated) {
+      this.setData({list: orderToBeEvaluated.detail, total_price: orderToBeEvaluated.price})
+    }
     console.log('evaluate page:', {order_id: id, from})
     // get order data with id
     // then set data to rerender page

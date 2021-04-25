@@ -32,8 +32,10 @@
       <view wx:if="{{item.status.value === 3}}" class="onemore" data-id="{{item.id}}">
         <navigator url="/pages/index/index" open-type="switchTab">再来一单</navigator>
       </view> 
-      <view wx:if="{{item.status.value === 3 && item.is_comments === 0}}" class="goto" data-id="{{item.id}}">
-        <navigator url="/pages/evaluate/evaluate?id={{item.id}}">去评价</navigator>
+      <view wx:if="{{item.status.value === 3 && item.is_comments === 0}}" 
+      class="goto" data-id="{{item.id}}" bind:tap="toEvaluate">
+        <!-- <navigator url="/pages/evaluate/evaluate?id={{item.id}}">去评价</navigator> -->
+        去评价
       </view>
       <view wx:if="{{item.status.value === 1}}" 
         class="goto" catch:tap="toCancel" 

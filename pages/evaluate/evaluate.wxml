@@ -4,14 +4,14 @@
   <view class="sec1">
     <view class="products">
       <view class="images">
-        <view wx:for="{{[1,2,3]}}" wx:key="index" class="image">
-          <image src="/assets/images/drink1.png" mode="aspectFill" />
-          <text>aklsdjlkasd</text>
+        <view wx:for="{{list}}" wx:key="index" class="image">
+          <image src="{{item.thumbnail}}" mode="aspectFill" />
+          <text>{{item.post_title}}</text>
         </view>
       </view>
       <view class="info"> 
-        <view class="currency"><text>¥</text>26.00</view>
-        <view class="count">共2件</view>
+        <view class="currency"><text>¥</text>{{total_price}}</view>
+        <view class="count">共{{list.length}}件</view>
       </view>
     </view>
   </view>

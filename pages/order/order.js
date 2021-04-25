@@ -40,8 +40,9 @@ Page({
     const { id, status, commented } = e.currentTarget.dataset;
     const code = parseInt(status.value);
     // ignore 1待发货 6已退款
-    if (code !== 2 && code !==3 && code !== 5 ) return; 
-    if (code === 3 && commented) return; // 已完成/已评价
+    
+    // if (code !== 2 && code !==3 && code !== 5 ) return; 
+    // if (code === 3 && commented) return; // 已完成/已评价
 
     console.log({id, status: code})
     wx.navigateTo({
@@ -63,6 +64,19 @@ Page({
       this.setData({login: true})
       this._getOrderList(this.data.tabIndex);
     }
+  },
+
+  toEvaluate(e) {
+    const {id} = e.currentTarget.dataset;
+    console.log({id})
+
+    const currentOrder = this.data.list.filter(o => o.id === id);
+    if (currentOrder[0]) wx.setStorageSync('orderToBeEvaluated', currentOrder[0])
+    console.log({currentOrder})
+    wx.navigateTo({
+      url: `/pages/evaluate/evaluate?id=${id}`
+    })
+
   },
 
   /**

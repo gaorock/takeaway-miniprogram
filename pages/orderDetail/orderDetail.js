@@ -25,16 +25,25 @@ Page({
     // if is_ziqu
     is_ziqu: false,
     shop_address:'',
-    shop_tel:''
+    shop_tel:'',
+    
+    // 
+    statusText: ''
   },
 
+  status: ['待付款', '待发货', '已发货', '已完成', '已取消', '退款中', '已退款'],
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
     const { id, type, from } = options;
     // 2已发货 3已完成 5退款中
-    console.log({id, type, from})
+    const typeNum = parseInt(type);
+    const statusText = this.status[typeNum];
+    console.log({status: statusText, typeNum})
+
+
+    // console.log({id, type, from})
     this._id = id;
     this._from = !!from;
     const detailRes = await fetch(URLs.getOrderDetail, {
@@ -94,7 +103,9 @@ Page({
       shop_address,
       shop_tel,
 
-      orderlist: orderxq
+      orderlist: orderxq,
+
+      statusText 
     })
   },
 
@@ -103,10 +114,16 @@ Page({
     wx.switchTab({ url: '/pages/index/index'})
   },
 
-  toEvaluate () {
+  toEvaluate (e) {
+    wx.setStorageSync('orderToBeEvaluated', {
+      detail: this.data.orderlist,
+      price: this.data.checkout.price
+    })
     console.log('toEvaluate', this.data.id);
     wx.navigateTo({ url: `/pages/evaluate/evaluate?id=${this._id}&from=1`})
   },
+
+  
 
   makePhoneCall () {
     const phone = wx.getStorageSync('shop_phone');
