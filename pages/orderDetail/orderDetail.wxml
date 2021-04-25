@@ -88,7 +88,7 @@
       </view>
       <view class="detail-item">
         <text class="detail-title">付款时间</text>
-        <text class="content">{{pay_time}}</text>
+        <text class="content">{{pay_time || ''}}</text>
       </view>
       <view class="detail-item memo">
         <text class="detail-title">买家留言</text>
