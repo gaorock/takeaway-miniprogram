@@ -36,10 +36,12 @@ Page({
 
   // template Event
   navigate (e) {
-    const { id, status } = e.currentTarget.dataset;
+    const { id, status, commented } = e.currentTarget.dataset;
     const code = parseInt(status.value);
     // ignore 1待发货 6已退款
     if (code !== 2 && code !==3 && code !== 5 ) return; 
+    if (code === 3 && commented) return; // 已完成/已评价
+
     console.log({id, status: code})
     wx.navigateTo({
       url: `../orderDetail/orderDetail?id=${id}&type=${code}`
@@ -95,11 +97,17 @@ Page({
         status: ref[status]
       }
     });
+    
+    let data = order.data
     if (order.code !== 1) return
     if (order.data.length === 0) return this._lastpage = true;
+    if (status === 1) { 
+      data = order.data.filter(o => o.is_comments === 0)
+    }
+
     this._currentPage++;
     this.setData({
-      list: [...oldList, ...order.data],
+      list: [...oldList, ...data],
     })
   },
 

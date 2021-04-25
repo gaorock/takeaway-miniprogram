@@ -43,7 +43,7 @@ Page({
 
     showSetting: false, // open weixin setting, to get permission
     permission: false,  // geoLocation permission
-
+    allowed: false,     // in case deliver area exceed limit
     // remark: '' // this._remark
   },
 
@@ -52,7 +52,7 @@ Page({
 
   async changeTab (e) {
     // lock user tab behaviour if not 3(any)
-    if (this.delivery_type !== 3) return;
+    if (this.data.delivery_type !== 3) return;
 
     const {idx} = e.currentTarget.dataset;
     if (idx === this.data.tabIndex) return;
@@ -211,6 +211,10 @@ Page({
       ziqu_time_index: hour_index
     })
 
+    // load 'delivery_type': 1配送2自取3随意
+    const delivery_type = wx.getStorageSync('delivery_type');
+    this.setData({delivery_type})
+
 
 
     if (cart) {
@@ -233,25 +237,39 @@ Page({
   async _requestSettle () {
     
     return new Promise(async (resolve, reject) => {
+      // get user choosed address from storage via address page
+      const settlementChooseAddressID = wx.getStorageSync('settlementChooseAddressID');
+
+      const requestData = {
+        type: 1,
+        goods: this._requestList,
+        // address_id: 51
+      }
+
+      if (settlementChooseAddressID) requestData.address_id = settlementChooseAddressID;
+
       try {
         // get coupon info from server
         const res = await fetch(URLs.postSettleOrder, {
           method: 'POST',
-          data: {
-            type: 1,
-            goods: this._requestList,
-            // address_id: 51
-          }
+          data: requestData
         })
         if (res.code === 1) {
-          const {total_price, price, youhui, time, freight, address, delivery_area} = res.data.data;
-
+          const {
+            total_price, 
+            price, youhui, 
+            time, 
+            freight, 
+            address, 
+            error_msg, // '抱歉,您所在位置超出配送距离!' 
+            delivery_area
+          } = res.data.data;
           this._fixedDeliveryName = address?address.contact:this.data.contact;
           this._fixedDeliveryPhone = address?address.phone:this.data.phone;
-          console.log(delivery_area)
+
+          
 
           this.setData({
-
             checkout: {
               priceStr: price,
               price: formatPrice(price),  // final price
@@ -259,14 +277,16 @@ Page({
               youhui,
               time,  // deliver time
               deliver_fee: freight, // deliver fee,
-              address: address?address.address:null, // user address
+              address, // user address, if not fixed area
             },
             contact: this._fixedDeliveryName,
             phone: this._fixedDeliveryPhone,
             id: address?address.id:null,
-            area: delivery_area
+            area: delivery_area,
+            error: error_msg,
+            allowed: !error_msg
           })
-          
+          console.log({allowed: !error_msg})
           resolve(true)
         }else {
           // 
@@ -337,6 +357,8 @@ Page({
   },
 
   async togopay () {
+    if (!this.data.allowed) return console.log('抱歉,您所在位置超出配送距离!')
+
     // if user choose 'ziqu' but no geoLocation permission, then not allowed to pay
     if (this.data.tabIndex === 1 && !this.data.permission) {
       this.setData({showSetting: true})
@@ -399,7 +421,10 @@ Page({
         // order_id
         // wx.setStorageSync('order_id', orderRes.data);
         wx.redirectTo({
-          url: `/pages/pay/pay?order_id=${orderRes.data}&money=${checkout.priceStr}`
+          url: `/pages/pay/pay?order_id=${orderRes.data}&money=${checkout.priceStr}`,
+          success () {
+            wx.removeStorageSync('settlementChooseAddressID')
+          }
         })
 
       } else {
@@ -455,12 +480,9 @@ Page({
    */
   onShow: async function () {
     try {
-      // load 'delivery_type': 1配送2自取3随意
-      const delivery_type = wx.getStorageSync('delivery_type');
-      this.setData({delivery_type})
       // deliver
-      if (delivery_type === 2) {
-        this.setData({tabIndex: 1})
+      if (this.data.tabIndex === 1) {
+        // this.setData({tabIndex: 1})
         try{
           await this._getUserLocation()
         } catch(e) {
@@ -469,8 +491,9 @@ Page({
           this.setData({showSetting: true, permission: false})
         }
         
-      } else {
+      } else if (this.data.tabIndex === 0){
         // default tab 1
+        // this.setData({tabIndex: 0})
         await this._requestSettle();
       }
     } catch(e) {  

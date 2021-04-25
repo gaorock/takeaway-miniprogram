@@ -17,14 +17,17 @@ Component({
     width: 0,
   },
 
+  _current_page: 1,
+
   lifetimes: {
     async attached () {
       // fetch commits data from server
       const commits = await fetch(`${getCommitsUrl}?page=1`);
       if (commits.code === 1) {
         this.setData({ commits: commits.data.data})
-        this._pageNum = parseInt(commits.data.current_page);
+        this._current_page = parseInt(commits.data.current_page);
         this._totalPage = parseInt(commits.data.last_page);
+        this.loadmore()
       }
 
       // console.log({_pageNum: this._pageNum, _totalPage: this._totalPage})
@@ -43,11 +46,11 @@ Component({
    */
   methods: {
     async loadmore () {
-      if (this._pageNum === this._totalPage) return;
+      if (this._current_page >= this._totalPage) return;
       // fetch commits data from server
-      const commits = await fetch(`${getCommitsUrl}?page=${this._pageNum+1}`);
+      const commits = await fetch(`${getCommitsUrl}?page=${this._current_page+1}`);
       if (commits.code === 1) {
-        this._pageNum = parseInt(commits.data.current_page);
+        this._current_page = parseInt(commits.data.current_page);
         const content = [...this.data.commits, ...commits.data.data]
         this.setData({ commits: content})
       }

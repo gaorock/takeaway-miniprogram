@@ -32,10 +32,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
-    const { id, type } = options;
+    const { id, type, from } = options;
     // 2已发货 3已完成 5退款中
-    console.log({id, type})
+    console.log({id, type, from})
     this._id = id;
+    this._from = !!from;
     const detailRes = await fetch(URLs.getOrderDetail, {
       method: 'POST',
       data: {id}
@@ -104,7 +105,7 @@ Page({
 
   toEvaluate () {
     console.log('toEvaluate', this.data.id);
-    wx.navigateTo({ url: '/pages/evaluate/evaluate?id='+this.data.id})
+    wx.navigateTo({ url: `/pages/evaluate/evaluate?id=${this._id}&from=1`})
   },
 
   makePhoneCall () {

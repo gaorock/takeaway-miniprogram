@@ -4,7 +4,7 @@
       <text class="order-title">订单状态</text>
       <text class="order-status-{{item.status.value}}">{{item.status.value === 5?'退款中': item.status.msg}}</text>
     </view>
-    <view class="details" bind:tap="navigate" data-id="{{item.id}}" data-status="{{item.status}}">
+    <view class="details" bind:tap="navigate" data-id="{{item.id}}" data-status="{{item.status}}" data-commented="{{item.is_comments}}">
       <view wx:if="{{item.detail.length === 1}}" class="items single">
         <image src="{{item.detail[0].thumbnail}}" mode="aspectFill" class="pic" />
         <view>
@@ -31,8 +31,8 @@
     <view class="buttons">
       <view wx:if="{{item.status.value === 3}}" class="onemore" data-id="{{item.id}}">
         <navigator url="/pages/index/index" open-type="switchTab">再来一单</navigator>
-      </view>
-      <view wx:if="{{item.status.value === 3}}" class="goto" data-id="{{item.id}}">
+      </view> 
+      <view wx:if="{{item.status.value === 3 && item.is_comments === 0}}" class="goto" data-id="{{item.id}}">
         <navigator url="/pages/evaluate/evaluate?id={{item.id}}">去评价</navigator>
       </view>
       <view wx:if="{{item.status.value === 1}}" 

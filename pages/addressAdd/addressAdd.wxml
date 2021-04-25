@@ -13,7 +13,7 @@
   <view class="info-line">
     <view class="info-title">联系电话</view>
     <view class="info-detail">
-      <input type="digit" placeholder-class="input-placeholder" placeholder="请输入联系人电话" bind:input="onInputPhone" value="{{phone}}"/>
+      <input type="digit" placeholder-class="input-placeholder" placeholder="请输入联系人电话" bind:input="onInputPhone" value="{{phone}}" maxlength="11"/>
     </view>
   </view>
   <view class="info-line">

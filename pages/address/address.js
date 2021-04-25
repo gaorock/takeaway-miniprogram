@@ -12,6 +12,8 @@ Page({
     list: [],
     tags: ['家', '公司', '学校', '其他'],
     login: false,
+
+    settlementChoose: false
   },
 
   async onChangeDefault (e) {
@@ -33,10 +35,26 @@ Page({
     })
   },
 
+
+  onChooseAddress (e) {
+    
+    if (this.data.settlementChooseOrderID) {
+      const {id} = e.currentTarget.dataset;
+      wx.setStorageSync('settlementChooseAddressID', id)
+      wx.navigateBack({
+        delta: 1
+      })
+    }
+    
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
+    const {choose} = options;
+    if (choose) this.setData({settlementChooseOrderID: true});
+
     const token = wx.getStorageSync('token');
     console.log(!!token)
     this.setData({login: !!token});

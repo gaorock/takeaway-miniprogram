@@ -117,6 +117,7 @@ const api = {
   getAddressDetail: 'user/Address/addressDetail',
   // 配送区域 GET（null）- 新增/编辑地址的时候调取， 返回area空为自动输入
   getAreaFromServer: 'user/address/area',
+  setDeliveryAddress: 'user/address/set_address',
 
 
   /** @name 订单列表 */

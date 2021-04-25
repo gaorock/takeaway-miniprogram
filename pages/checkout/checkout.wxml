@@ -17,7 +17,7 @@
       <block>
         <navigator url="/pages/address/address?choose=1" wx:if="{{!area}}">
           <view class="address-wrapper">
-            <view class="address">{{checkout.address || '请添加地址'}}</view>
+            <view class="address">{{checkout.address? (checkout.address.address + ' ' + checkout.address.detail):'请添加地址'}}</view>
             <image class="icon" src="/assets/icons/navigate_next-black-18dp.svg" mode="widthFix" />
           </view>
         </navigator>
@@ -30,8 +30,8 @@
         </picker>
       </block>
       
-      <!-- <view wx:if="{{contact && phone}}" class="phone">{{contact}} {{phone}}</view> -->
-      <view class="delivery_type_1_input_wapper"> 
+      <view wx:if="{{!area && checkout.address}}" class="phone">{{checkout.address.contact}} {{checkout.address.phone}}</view>
+      <view wx:else class="delivery_type_1_input_wapper"> 
         <input class="delivery_type_1_input" value="{{contact}}"
         placeholder="请输入联系人" placeholder-class="placeholder" maxlength="10"
         bind:input="onFixedDeliveryNameChange"/>
@@ -143,11 +143,11 @@
       </view>
       <view class="discount">已优惠￥{{checkout.youhui}}</view>
     </view>
-    <view class="pay{{(tabIndex === 0 || permission)?'': ' notallowd'}}" bind:tap="togopay">去支付</view>
+    <view class="pay{{((tabIndex === 0 || permission) && allowed)?'': ' notallowd'}}" bind:tap="togopay">去支付</view>
   </view>
   <view class="iphone" style="height: {{bottomHeight}}rpx">
     <view class="summary"></view>
-    <view class="pay{{(tabIndex === 0 || permission)?'': ' notallowd'}}"></view>
+    <view class="pay{{((tabIndex === 0 || permission) && allowed)?'': ' notallowd'}}"></view>
   </view>
 </view>
 

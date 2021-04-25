@@ -5,7 +5,7 @@
     <view>新增地址</view>
   </view>
 
-  <view class="address-item" wx:for="{{list}}" wx:key="id">
+  <view class="address-item" wx:for="{{list}}" wx:key="id" bind:tap="onChooseAddress" data-id="{{item.id}}">
     <view class="details">
       <view class="info">
         <view class="info-address">{{item.address}} {{item.detail}}<text>{{tags[item.tag-1]}}</text></view>
@@ -15,7 +15,7 @@
         <image src="/assets/icons/edit.png" class="edit-icon" mode="widthFix"/>
       </navigator>
     </view>
-    <view class="set-default" bind:tap="onChangeDefault" data-id="{{item.id}}">
+    <view class="set-default" catch:tap="onChangeDefault" data-id="{{item.id}}">
       <image src="/assets/icons/radio_button{{item.id === default?'_checked':''}}.svg"  mode="widthFix" />
       <text>{{item.id === default?'默认地址':'设为默认地址'}}</text>
     </view>

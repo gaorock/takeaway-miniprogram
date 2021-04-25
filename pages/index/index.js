@@ -227,6 +227,8 @@ Page({
     wx.setStorageSync('shop_phone', res.data.shop.shop_tel);
     // save a copy for cart detail list
     wx.setStorageSync('products', json.productsTable);
+    // record delivery_type
+    wx.setStorageSync('delivery_type', res.data.delivery_type);
 
     this.setData({
       shop: json.shop,

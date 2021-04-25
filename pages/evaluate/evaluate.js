@@ -154,9 +154,11 @@ Page({
   onErrorDown () {
     this.setData({error: null})
     if (this._success) {
-      wx.navigateBack({
-        delta: 1
-      })
+      if (this._from) {
+        wx.navigateBack({delta: 2})
+      } else {
+        wx.navigateBack({delta: 1})
+      }
     }
   },
 
@@ -166,11 +168,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const {id} = options;
+    const {id, from} = options;
     if (!id) return;
-
+    this._from = !!from;
     this._id = id;
-    console.log('evaluate page:', {id})
+    console.log('evaluate page:', {order_id: id, from})
     // get order data with id
     // then set data to rerender page
     // ...
