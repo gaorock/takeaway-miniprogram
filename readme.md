@@ -26,9 +26,9 @@
 
 1. [x] order miss status - after evaluate but finished
 2. [x] '/user/Profile/userInfo' - return 'total_consume_price': 693.6499999999999
-3. [ ] need to test settlement without fixed delivery areas.
+3. [x] need to test settlement without fixed delivery areas.
 4. [x] checkout page, if server set 'delivery_type' - 1配送2自取3随意, then api should return 'delivery_type', now is only 3 for testing.
-5. [ ] address list need to add 'click to select' function for checkout page when delivery is free address.
+5. [x] address list need to add 'click to select' function for checkout page when delivery is free address.
 
 ### COMPONENETS
 
@@ -132,7 +132,6 @@ data: {
 4. [x] 设置默认地址 [POST] id ```postSetDefaultAddress: 'user/Address/set_mr'```
 5. [x] 地址详情 [GET] id ```getAddressDetail: 'user/Address/addressDetail'```
 6. [x] remove 配送区域 [GET]（null）```getAreaFromServer: 'user/address/area'```
-7. [ ] 选择地址 user/address/set_address order_id, id(地址ID)
 
 ### orderlist
 
